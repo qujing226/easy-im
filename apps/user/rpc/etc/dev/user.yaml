@@ -1,5 +1,6 @@
 Name: user.rpc
 ListenOn: 0.0.0.0:10000
+Mode: test
 Etcd:
   Hosts:
   - 118.178.120.11:3379

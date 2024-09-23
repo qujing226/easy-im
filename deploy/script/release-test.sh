@@ -1,11 +1,12 @@
-need_start_server_shell=(
-  # rpc
-  user-rpc-dev.sh
-  # api
+#!/bin/bash
 
+need_start_server_shell=(
+  # "rpc.sh"
+  "user-rpc-dev.sh"
+  # "api.sh"
 )
 
-for i in ${need_start_server_shell[@*}; do
+for i in ${need_start_server_shell[*]}; do
   chmod +x $i
   ./$i
 done
