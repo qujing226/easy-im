@@ -10,7 +10,7 @@ services:
     environment:
       - ETCD_ENABLE_V2=true
       - ALLOW_NONE_AUTHENTICATION=yes
-      - ETCD_ADVERTISE_CLIENT_URLS=http://192.168.114.131:3379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://118.178.120.11:3379
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
       - ETCD_NAME=etcd
     volumes:
