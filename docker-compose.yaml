@@ -31,8 +31,7 @@ services:
     restart: always
     networks:
       easy-chat:
-    command:
-      - redis-server --require-pass easy-chat --appendonly yes
+    command: redis-server --requirepass easy-chat --appendonly yes
 
   mysql:
     image: mysql:8.0.34

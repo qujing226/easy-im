@@ -3,6 +3,5 @@ user-rpc-dev:
 
 release-test: user-rpc-dev
 
-
 install-server:
 	cd ./deploy/script && chmod +x release-test.sh && ./release-test.sh
