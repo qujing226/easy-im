@@ -21,7 +21,7 @@ services:
   redis:
     image: redis:alpine3.18
     ports:
-      - "16739:6379"
+      - "16379:6379"
     container_name: redis
     volumes:
       - ./components/redis/data:/data
