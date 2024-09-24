@@ -4,7 +4,56 @@
 使用go语言创建的即时通讯项目
 
 #### 软件架构
-软件架构说明
+``` bash
+./
+├── apps
+│   └── user
+│       ├── api
+│       ├── exec.sh
+│       └── rpc
+│           ├── etc
+│           │   └── dev
+│           │       └── user.yaml
+│           ├── internal
+│           │   ├── config
+│           │   │   └── config.go
+│           │   ├── logic
+│           │   │   ├── finduserlogic.go
+│           │   │   ├── getuserinfologic.go
+│           │   │   ├── loginlogic.go
+│           │   │   ├── pinglogic.go
+│           │   │   └── registerlogic.go
+│           │   ├── server
+│           │   │   └── userserver.go
+│           │   └── svc
+│           │       └── servicecontext.go
+│           ├── user
+│           │   ├── user_grpc.pb.go
+│           │   └── user.pb.go
+│           ├── userclient
+│           │   └── user.go
+│           ├── user.go
+│           └── user.proto
+├── bin
+│   └── user-rpc
+├── deploy
+│   ├── dockerfile
+│   │   └── Dockerfile_user_rpc_dev
+│   ├── mk
+│   │   └── user-rpc.mk
+│   └── script
+│       ├── release-test.sh
+│       └── user-rpc-dev.sh
+├── docker-compose.yaml
+├── go.mod
+├── go.sum
+├── Makefile
+├── pkg
+├── README.md
+└── structure.txt
+
+
+```
 
 
 #### 安装教程
