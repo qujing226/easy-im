@@ -58,10 +58,10 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		u.Password = string(pass)
 	}
 	// 3.保存用户
-	//err = l.svcCtx.DB.Create(&u).Error
-	//if err != nil {
-	//	return nil, errors.New("save user failed")
-	//}
+	err := l.svcCtx.DB.Create(&u).Error
+	if err != nil {
+		return nil, errors.New("save user failed")
+	}
 
 	// 4. 生成token
 	now := time.Now().Unix()

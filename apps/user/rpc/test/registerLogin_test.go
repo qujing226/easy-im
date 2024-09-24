@@ -55,3 +55,36 @@ func TestRegisterLogic_Register(t *testing.T) {
 		})
 	}
 }
+
+func TestLoginLogic_Login(t *testing.T) {
+	type args struct {
+		in *user.LoginReq
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    bool
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+		{
+			name: "1", args: args{in: &user.LoginReq{
+				Phone:    "17309710356",
+				Password: "yining2024",
+			}}, want: true, wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			l := logic.NewLoginLogic(context.Background(), svcCtx)
+			got, err := l.Login(tt.args.in)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Login() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !tt.wantErr {
+				t.Log(tt.name, got)
+			}
+		})
+	}
+}
