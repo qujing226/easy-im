@@ -5,13 +5,19 @@ import (
 	"easy-chat/apps/user/common/models"
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
-	"errors"
+	"easy-chat/pkg/xerr"
+	"github.com/pkg/errors"
 	"time"
 
 	"easy-chat/apps/user/rpc/internal/svc"
 	"easy-chat/apps/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
+)
+
+var (
+	ErrPhoneNotFound = xerr.New(xerr.SERVER_COMMON_ERROR, "user not found")
+	ErrUserPwdErr    = xerr.New(xerr.SERVER_COMMON_ERROR, "password is wrong")
 )
 
 type LoginLogic struct {
@@ -32,20 +38,25 @@ func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 	// todo: add your logic here and delete this line
 	var u models.User
 	// 1.检查用户是否存在(phone)
-	l.svcCtx.DB.Where("phone = ?", in.Phone).First(&u)
-	if u.ID == "" {
-		return nil, errors.New("user doesn't exists")
+	err := l.svcCtx.DB.Where("phone = ?", in.Phone).First(&u).Error
+	if err != nil {
+		if u.ID == "" {
+			return nil, errors.WithStack(ErrPhoneNotFound)
+		}
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by phone "+
+			" err %v req %v", err, in.Phone)
 	}
 
 	// 2. 密码验证
 	if !encrypy.ValidatePasswordHash([]byte(u.Password), []byte(in.Password)) {
-		return nil, errors.New("password is wrong")
+		return nil, errors.WithStack(ErrUserPwdErr)
 	}
 	// 3. 生成token
 	now := time.Now().Unix()
 	token, err := ctxdata.GetJwtToken(l.svcCtx.Config.Jwt.AccessSecret, now, l.svcCtx.Config.Jwt.AccessExpire, u.ID)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(xerr.NewDBErr(), "etxdata get jwt token"+
+			" err %v ", in.Phone)
 	}
 	return &user.LoginResp{
 		Token:  token,

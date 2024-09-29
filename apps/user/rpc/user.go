@@ -1,6 +1,7 @@
 package main
 
 import (
+	"easy-chat/pkg/interceptot/rpcserver"
 	"flag"
 	"fmt"
 
@@ -33,6 +34,8 @@ func main() {
 		}
 	})
 	defer s.Stop()
+
+	s.AddUnaryInterceptors(rpcserver.LogInterceptor)
 
 	fmt.Printf("Starting rpc server at %s...\n", c.ListenOn)
 	s.Start()
