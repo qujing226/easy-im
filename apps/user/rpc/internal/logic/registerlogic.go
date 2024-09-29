@@ -6,7 +6,7 @@ import (
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
 	"easy-chat/pkg/suid"
-	"errors"
+	"github.com/pkg/errors"
 	"time"
 
 	"easy-chat/apps/user/rpc/internal/svc"
@@ -35,6 +35,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	// 1.检查用户是否存在(phone)
 	l.svcCtx.DB.Where("phone = ?", in.Phone).First(&u)
 	if u.ID != "" {
+		l.Logger.Error(errors.New("user exists"))
 		return nil, errors.New("user exists")
 	}
 
@@ -53,6 +54,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	if in.Password != "" {
 		pass, err := encrypy.GenPasswordHash([]byte(in.Password))
 		if err != nil {
+			l.Logger.Error(err)
 			return nil, err
 		}
 		u.Password = string(pass)
@@ -60,6 +62,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	// 3.保存用户
 	err := l.svcCtx.DB.Create(&u).Error
 	if err != nil {
+		l.Logger.Error(err)
 		return nil, errors.New("save user failed")
 	}
 
@@ -67,6 +70,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	now := time.Now().Unix()
 	token, err := ctxdata.GetJwtToken(l.svcCtx.Config.Jwt.AccessSecret, now, l.svcCtx.Config.Jwt.AccessExpire, u.ID)
 	if err != nil {
+		l.Logger.Error(err)
 		return nil, err
 	}
 	return &user.RegisterResp{

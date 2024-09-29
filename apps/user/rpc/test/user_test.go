@@ -88,3 +88,82 @@ func TestLoginLogic_Login(t *testing.T) {
 		})
 	}
 }
+func TestGetUserInfoLogic_GetUserInfo(t *testing.T) {
+	type args struct {
+		in *user.GetUserInfoReq
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    bool
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+		{
+			name: "1", args: args{in: &user.GetUserInfoReq{
+				User: "1838501776039350272",
+			}}, want: true, wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			l := logic.NewGetUserInfoLogic(context.Background(), svcCtx)
+			got, err := l.GetUserInfo(tt.args.in)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("GetUserInfo() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !tt.wantErr {
+				t.Logf("GetUserInfo() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFindUserLogic_FindUser(t *testing.T) {
+	type args struct {
+		in *user.FindUserReq
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    bool
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+		{
+			name: "1", args: args{in: &user.FindUserReq{
+				Name:  "Q",
+				Phone: "",
+				Ids:   []string{},
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "1", args: args{in: &user.FindUserReq{
+				Name:  "",
+				Phone: "17309710356",
+				Ids:   []string{},
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "1", args: args{in: &user.FindUserReq{
+				Name:  "",
+				Phone: "",
+				Ids:   []string{"id1", "id2", "id3"},
+			}}, want: true, wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			l := logic.NewFindUserLogic(context.Background(), svcCtx)
+			got, err := l.FindUser(tt.args.in)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("FindUser() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !tt.wantErr {
+				t.Logf("FindUser() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
