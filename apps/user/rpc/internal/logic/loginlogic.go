@@ -15,11 +15,6 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-var (
-	ErrPhoneNotFound = xerr.New(xerr.SERVER_COMMON_ERROR, "user not found")
-	ErrUserPwdErr    = xerr.New(xerr.SERVER_COMMON_ERROR, "password is wrong")
-)
-
 type LoginLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
@@ -36,15 +31,16 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 
 func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 	// todo: add your logic here and delete this line
-	var u models.User
+	u := &models.User{}
+	var err error
 	// 1.检查用户是否存在(phone)
-	err := l.svcCtx.DB.Where("phone = ?", in.Phone).First(&u).Error
+	err = l.svcCtx.CSvc.GetUserByPhone(u, in.Phone)
 	if err != nil {
 		if u.ID == "" {
 			return nil, errors.WithStack(ErrPhoneNotFound)
 		}
 		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by phone "+
-			" err %v req %v", err, in.Phone)
+			"%v err %v ", in.Phone, err)
 	}
 
 	// 2. 密码验证

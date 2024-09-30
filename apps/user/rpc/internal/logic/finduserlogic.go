@@ -26,30 +26,27 @@ func NewFindUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *FindUser
 
 func (l *FindUserLogic) FindUser(in *user.FindUserReq) (*user.FindUserResp, error) {
 	// todo: add your logic here and delete this line
-	var users []models.User
+	var users = []models.User{{}}
 	var userEntities []*user.UserEntity
 
 	if in.Phone != "" {
-		err := l.svcCtx.DB.Where("phone = ?", in.Phone).Find(&users).Error
+		err := l.svcCtx.CSvc.GetUserByPhone(&users[0], in.Phone)
 		if err != nil {
-			l.Logger.Error(err)
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to find user by phone: %s", in.Phone)
 		}
 	} else if len(in.Ids) > 0 {
-		err := l.svcCtx.DB.Where("id IN (?)", in.Ids).Find(&users).Error
+		users = nil
+		err := l.svcCtx.CSvc.GetUserByIds(&users, in.Ids)
 		if err != nil {
-			l.Logger.Error(err)
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to find users by IDs: %v", in.Ids)
 		}
 	} else if in.Name != "" {
-		err := l.svcCtx.DB.Where("nickname LIKE ?", "%"+in.Name+"%").Find(&users).Error
+		err := l.svcCtx.CSvc.GetUserByName(&users[0], in.Name)
 		if err != nil {
-			l.Logger.Error(err)
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to find users by name: %s", in.Name)
 		}
 	} else {
-		l.Logger.Error(errors.New("params error"))
-		return nil, errors.New("params error")
+		return nil, errors.WithStack(ErrParamError)
 	}
 
 	userEntities = make([]*user.UserEntity, len(users))

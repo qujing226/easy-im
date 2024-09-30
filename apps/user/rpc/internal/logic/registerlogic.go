@@ -6,6 +6,7 @@ import (
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
 	"easy-chat/pkg/suid"
+	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
 	"time"
 
@@ -31,16 +32,20 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 
 func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, error) {
 	// todo: add your logic here and delete this line
-	var u models.User
+	u := models.User{}
+	var err error
 	// 1.检查用户是否存在(phone)
-	l.svcCtx.DB.Where("phone = ?", in.Phone).First(&u)
-	if u.ID != "" {
-		l.Logger.Error(errors.New("user exists"))
-		return nil, errors.New("user exists")
+	err = l.svcCtx.CSvc.GetUserByPhone(&u, in.Phone)
+	if err != nil {
+		if u.ID == "" {
+			return nil, errors.WithStack(ErrPhoneNotFound)
+		}
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by phone "+
+			" err %v req %v", err, in.Phone)
 	}
 
 	// 2.定义新增用户
-	u = models.User{
+	U := &models.User{
 		ID:        suid.GenerateID(),
 		Avatar:    in.Avatar,
 		Nickname:  in.Nickname,
@@ -54,24 +59,22 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	if in.Password != "" {
 		pass, err := encrypy.GenPasswordHash([]byte(in.Password))
 		if err != nil {
-			l.Logger.Error(err)
-			return nil, err
+			return nil, errors.Wrapf(xerr.NewServerCommonErr(), "passwordHash gen err %v", err)
 		}
 		u.Password = string(pass)
 	}
 	// 3.保存用户
-	err := l.svcCtx.DB.Create(&u).Error
+	err = l.svcCtx.CSvc.CreateUser(U)
 	if err != nil {
-		l.Logger.Error(err)
-		return nil, errors.New("save user failed")
+		return nil, errors.Wrapf(xerr.NewDBErr(), "save user %v failed ,err %v", in, err)
 	}
 
 	// 4. 生成token
 	now := time.Now().Unix()
 	token, err := ctxdata.GetJwtToken(l.svcCtx.Config.Jwt.AccessSecret, now, l.svcCtx.Config.Jwt.AccessExpire, u.ID)
 	if err != nil {
-		l.Logger.Error(err)
-		return nil, err
+		return nil, errors.Wrapf(xerr.NewDBErr(), "extdata get jwt token"+
+			" err %v", in.Phone)
 	}
 	return &user.RegisterResp{
 		Token:  token,

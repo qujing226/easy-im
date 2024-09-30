@@ -7,9 +7,9 @@ func New(code int, msg string) error {
 }
 
 func NewDBErr() error {
-	return New(DB_ERROR, ErrMsg(DB_ERROR))
+	return New(DbError, ErrMsg(DbError))
 }
 
 func NewServerCommonErr() error {
-	return New(SERVER_COMMON_ERROR, ErrMsg(SERVER_COMMON_ERROR))
+	return New(ServerCommonError, ErrMsg(ServerCommonError))
 }

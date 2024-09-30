@@ -33,12 +33,12 @@ func TestRegisterLogic_Register(t *testing.T) {
 	}{
 		{
 			name: "1", args: args{in: &user.RegisterReq{
-				Phone:    "17309710356",
-				Password: "yining2024",
-				Nickname: "Qwyk",
-				Avatar:   "",
-				Sex:      0,
-			}}, want: true, wantErr: false,
+			Phone:    "11122223333",
+			Password: "admin",
+			Nickname: "admin",
+			Avatar:   "",
+			Sex:      0,
+		}}, want: true, wantErr: false,
 		},
 	}
 	for _, tt := range tests {
@@ -69,9 +69,9 @@ func TestLoginLogic_Login(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "1", args: args{in: &user.LoginReq{
-				Phone:    "17309710356",
-				Password: "yining2024",
-			}}, want: true, wantErr: false,
+			Phone:    "17309710356",
+			Password: "yining2024",
+		}}, want: true, wantErr: false,
 		},
 	}
 	for _, tt := range tests {
@@ -101,8 +101,8 @@ func TestGetUserInfoLogic_GetUserInfo(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "1", args: args{in: &user.GetUserInfoReq{
-				User: "1838501776039350272",
-			}}, want: true, wantErr: false,
+			User: "1838501776039350272",
+		}}, want: true, wantErr: false,
 		},
 	}
 	for _, tt := range tests {
@@ -133,24 +133,24 @@ func TestFindUserLogic_FindUser(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "1", args: args{in: &user.FindUserReq{
-				Name:  "Q",
-				Phone: "",
-				Ids:   []string{},
-			}}, want: true, wantErr: false,
+			Name:  "Qwyk",
+			Phone: "",
+			Ids:   []string{},
+		}}, want: true, wantErr: false,
 		},
 		{
 			name: "1", args: args{in: &user.FindUserReq{
-				Name:  "",
-				Phone: "17309710356",
-				Ids:   []string{},
-			}}, want: true, wantErr: false,
+			Name:  "",
+			Phone: "17309710356",
+			Ids:   []string{},
+		}}, want: true, wantErr: false,
 		},
 		{
 			name: "1", args: args{in: &user.FindUserReq{
-				Name:  "",
-				Phone: "",
-				Ids:   []string{"id1", "id2", "id3"},
-			}}, want: true, wantErr: false,
+			Name:  "",
+			Phone: "",
+			Ids:   []string{"1838501776039350272", "1840324474826657792", "1840643788553326592"},
+		}}, want: true, wantErr: false,
 		},
 	}
 	for _, tt := range tests {

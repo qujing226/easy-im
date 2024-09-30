@@ -11,7 +11,7 @@ Mysql:
 Cache:
   - Host: 118.178.120.11:16379
     Type: node
-    Password: easy-chat
+    Pass: easy-chat
 Jwt:
   AccessSecret: easy-chat
   AccessExpire: 864000

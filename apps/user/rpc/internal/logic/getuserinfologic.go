@@ -3,10 +3,10 @@ package logic
 import (
 	"context"
 	"easy-chat/apps/user/common/models"
-	"errors"
-
 	"easy-chat/apps/user/rpc/internal/svc"
 	"easy-chat/apps/user/rpc/user"
+	"easy-chat/pkg/xerr"
+	"github.com/pkg/errors"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,22 +27,27 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 
 func (l *GetUserInfoLogic) GetUserInfo(in *user.GetUserInfoReq) (*user.GetUserInfoResp, error) {
 	// todo: add your logic here and delete this line
-	var u models.User
+	var u []models.User
+	s := make([]string, 1)
+	s[0] = in.User
 	var userEntity user.UserEntity
-	l.svcCtx.DB.Where("id = ?", in.User).Find(&u)
-	if u.ID == "" {
-		l.Logger.Error(errors.New("user not exists"))
-		return nil, errors.New("user not exists")
+	err := l.svcCtx.CSvc.GetUserByIds(&u, s)
+	ur := u[0]
+	if err != nil {
+		if ur.ID == "" {
+			return nil, errors.WithStack(ErrIDNotFound)
+		}
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by id "+
+			" err %v req %v", err, in.User)
 	}
 
 	userEntity = user.UserEntity{
-		Id:       u.ID,
-		Avatar:   u.Avatar,
-		Nickname: u.Nickname,
-		Phone:    u.Phone,
-		Status:   int32(u.Status),
-		Sex:      int32(u.Sex),
+		Id:       ur.ID,
+		Avatar:   ur.Avatar,
+		Nickname: ur.Nickname,
+		Phone:    ur.Phone,
+		Status:   int32(ur.Status),
+		Sex:      int32(ur.Sex),
 	}
-
 	return &user.GetUserInfoResp{User: &userEntity}, nil
 }
