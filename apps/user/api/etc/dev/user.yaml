@@ -1,0 +1,12 @@
+Name: user
+Host: 0.0.0.0
+Port: 8888
+UserRpc:
+  Etcd:
+    Hosts:
+      - 118.178.120.11:3379
+    Key: api.rpc
+
+JwtAuth:
+  AccessSecret: easy-chat
+  AccessExpire: 864000
