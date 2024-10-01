@@ -2,9 +2,9 @@ package svc
 
 import (
 	"context"
-	"easy-chat/apps/user/common/models"
-	"easy-chat/apps/user/common/utils"
 	"easy-chat/apps/user/rpc/internal/config"
+	"easy-chat/apps/user/rpc/models"
+	"easy-chat/pkg/utils"
 	"encoding/json"
 	"fmt"
 	"github.com/redis/go-redis/v9"
@@ -20,7 +20,7 @@ type CacheService struct {
 func NewCacheService(c config.Config) *CacheService {
 	return &CacheService{
 		DB:  utils.InitDB(c.Mysql.DataSource),
-		RDB: utils.InitRDB(c.Redis.Host, c.Redis.Pass),
+		RDB: utils.InitRDB(c.Cache[0].Host, c.Cache[0].Pass),
 	}
 }
 
@@ -81,16 +81,19 @@ func (s *CacheService) GetUserByIds(users *[]models.User, ids []string) error {
 			continue
 		}
 
-		err = s.DB.Where("id = (?)", id).First(&user).Error
+		err = s.DB.Where("id = ?", id).First(&user).Error
 		if err != nil {
+
 			return err
 		}
 		err = s.SetUserCache(&user, cacheKey)
 		if err != nil {
+			fmt.Println(err)
 			return err
 		}
 
 		*users = append(*users, user)
+		fmt.Println(users)
 	}
 	return nil
 }

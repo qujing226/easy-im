@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/common/models"
+	"easy-chat/apps/user/rpc/models"
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
 	"easy-chat/pkg/xerr"
@@ -37,15 +37,15 @@ func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 	err = l.svcCtx.CSvc.GetUserByPhone(u, in.Phone)
 	if err != nil {
 		if u.ID == "" {
-			return nil, errors.WithStack(ErrPhoneNotFound)
+			return nil, errors.WithStack(xerr.PhoneNotFound)
 		}
-		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by phone "+
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find api by phone "+
 			"%v err %v ", in.Phone, err)
 	}
 
 	// 2. 密码验证
 	if !encrypy.ValidatePasswordHash([]byte(u.Password), []byte(in.Password)) {
-		return nil, errors.WithStack(ErrUserPwdErr)
+		return nil, errors.WithStack(xerr.UserPwdErr)
 	}
 	// 3. 生成token
 	now := time.Now().Unix()

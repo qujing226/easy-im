@@ -2,8 +2,8 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/common/models"
 	"easy-chat/apps/user/rpc/internal/svc"
+	"easy-chat/apps/user/rpc/models"
 	"easy-chat/apps/user/rpc/user"
 	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
@@ -27,7 +27,7 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 
 func (l *GetUserInfoLogic) GetUserInfo(in *user.GetUserInfoReq) (*user.GetUserInfoResp, error) {
 	// todo: add your logic here and delete this line
-	var u []models.User
+	u := make([]models.User, 0, 1)
 	s := make([]string, 1)
 	s[0] = in.User
 	var userEntity user.UserEntity
@@ -35,9 +35,9 @@ func (l *GetUserInfoLogic) GetUserInfo(in *user.GetUserInfoReq) (*user.GetUserIn
 	ur := u[0]
 	if err != nil {
 		if ur.ID == "" {
-			return nil, errors.WithStack(ErrIDNotFound)
+			return nil, errors.WithStack(xerr.IdNotFound)
 		}
-		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by id "+
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find api by id "+
 			" err %v req %v", err, in.User)
 	}
 

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.34.2
 // 	protoc        v3.21.12
-// source: user.proto
+// source: api.proto
 
 package user
 
@@ -452,7 +452,7 @@ type GetUserInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	User string `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User string `protobuf:"bytes,1,opt,name=api,proto3" json:"api,omitempty"`
 }
 
 func (x *GetUserInfoReq) Reset() {
@@ -499,7 +499,7 @@ type GetUserInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	User *UserEntity `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User *UserEntity `protobuf:"bytes,1,opt,name=api,proto3" json:"api,omitempty"`
 }
 
 func (x *GetUserInfoResp) Reset() {
@@ -736,31 +736,31 @@ func file_user_proto_rawDescGZIP() []byte {
 
 var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_user_proto_goTypes = []any{
-	(*UserEntity)(nil),      // 0: user.UserEntity
-	(*Request)(nil),         // 1: user.Request
-	(*Response)(nil),        // 2: user.Response
-	(*LoginReq)(nil),        // 3: user.LoginReq
-	(*LoginResp)(nil),       // 4: user.LoginResp
-	(*RegisterReq)(nil),     // 5: user.RegisterReq
-	(*RegisterResp)(nil),    // 6: user.RegisterResp
-	(*GetUserInfoReq)(nil),  // 7: user.GetUserInfoReq
-	(*GetUserInfoResp)(nil), // 8: user.GetUserInfoResp
-	(*FindUserReq)(nil),     // 9: user.FindUserReq
-	(*FindUserResp)(nil),    // 10: user.FindUserResp
+	(*UserEntity)(nil),      // 0: api.UserEntity
+	(*Request)(nil),         // 1: api.Request
+	(*Response)(nil),        // 2: api.Response
+	(*LoginReq)(nil),        // 3: api.LoginReq
+	(*LoginResp)(nil),       // 4: api.LoginResp
+	(*RegisterReq)(nil),     // 5: api.RegisterReq
+	(*RegisterResp)(nil),    // 6: api.RegisterResp
+	(*GetUserInfoReq)(nil),  // 7: api.GetUserInfoReq
+	(*GetUserInfoResp)(nil), // 8: api.GetUserInfoResp
+	(*FindUserReq)(nil),     // 9: api.FindUserReq
+	(*FindUserResp)(nil),    // 10: api.FindUserResp
 }
 var file_user_proto_depIdxs = []int32{
-	0,  // 0: user.GetUserInfoResp.user:type_name -> user.UserEntity
-	0,  // 1: user.FindUserResp.users:type_name -> user.UserEntity
-	1,  // 2: user.User.Ping:input_type -> user.Request
-	3,  // 3: user.User.Login:input_type -> user.LoginReq
-	5,  // 4: user.User.Register:input_type -> user.RegisterReq
-	7,  // 5: user.User.GetUserInfo:input_type -> user.GetUserInfoReq
-	9,  // 6: user.User.FindUser:input_type -> user.FindUserReq
-	2,  // 7: user.User.Ping:output_type -> user.Response
-	4,  // 8: user.User.Login:output_type -> user.LoginResp
-	6,  // 9: user.User.Register:output_type -> user.RegisterResp
-	8,  // 10: user.User.GetUserInfo:output_type -> user.GetUserInfoResp
-	10, // 11: user.User.FindUser:output_type -> user.FindUserResp
+	0,  // 0: api.GetUserInfoResp.api:type_name -> api.UserEntity
+	0,  // 1: api.FindUserResp.users:type_name -> api.UserEntity
+	1,  // 2: api.User.Ping:input_type -> api.Request
+	3,  // 3: api.User.Login:input_type -> api.LoginReq
+	5,  // 4: api.User.Register:input_type -> api.RegisterReq
+	7,  // 5: api.User.GetUserInfo:input_type -> api.GetUserInfoReq
+	9,  // 6: api.User.FindUser:input_type -> api.FindUserReq
+	2,  // 7: api.User.Ping:output_type -> api.Response
+	4,  // 8: api.User.Login:output_type -> api.LoginResp
+	6,  // 9: api.User.Register:output_type -> api.RegisterResp
+	8,  // 10: api.User.GetUserInfo:output_type -> api.GetUserInfoResp
+	10, // 11: api.User.FindUser:output_type -> api.FindUserResp
 	7,  // [7:12] is the sub-list for method output_type
 	2,  // [2:7] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name

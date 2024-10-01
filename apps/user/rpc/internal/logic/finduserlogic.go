@@ -2,9 +2,10 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/common/models"
 	"easy-chat/apps/user/rpc/internal/svc"
+	"easy-chat/apps/user/rpc/models"
 	"easy-chat/apps/user/rpc/user"
+	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -26,13 +27,13 @@ func NewFindUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *FindUser
 
 func (l *FindUserLogic) FindUser(in *user.FindUserReq) (*user.FindUserResp, error) {
 	// todo: add your logic here and delete this line
-	var users = []models.User{{}}
+	var users = make([]models.User, 1) // 第一个位置留给 phone、name 查询
 	var userEntities []*user.UserEntity
 
 	if in.Phone != "" {
 		err := l.svcCtx.CSvc.GetUserByPhone(&users[0], in.Phone)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to find user by phone: %s", in.Phone)
+			return nil, errors.Wrapf(err, "failed to find api by phone: %s", in.Phone)
 		}
 	} else if len(in.Ids) > 0 {
 		users = nil
@@ -46,7 +47,7 @@ func (l *FindUserLogic) FindUser(in *user.FindUserReq) (*user.FindUserResp, erro
 			return nil, errors.Wrapf(err, "failed to find users by name: %s", in.Name)
 		}
 	} else {
-		return nil, errors.WithStack(ErrParamError)
+		return nil, errors.WithStack(xerr.ParamError)
 	}
 
 	userEntities = make([]*user.UserEntity, len(users))

@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/common/models"
+	"easy-chat/apps/user/rpc/models"
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
 	"easy-chat/pkg/suid"
@@ -38,9 +38,9 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	err = l.svcCtx.CSvc.GetUserByPhone(&u, in.Phone)
 	if err != nil {
 		if u.ID == "" {
-			return nil, errors.WithStack(ErrPhoneNotFound)
+			return nil, errors.WithStack(xerr.PhoneNotFound)
 		}
-		return nil, errors.Wrapf(xerr.NewDBErr(), "find user by phone "+
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find api by phone "+
 			" err %v req %v", err, in.Phone)
 	}
 
@@ -66,7 +66,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 	// 3.保存用户
 	err = l.svcCtx.CSvc.CreateUser(U)
 	if err != nil {
-		return nil, errors.Wrapf(xerr.NewDBErr(), "save user %v failed ,err %v", in, err)
+		return nil, errors.Wrapf(xerr.NewDBErr(), "save api %v failed ,err %v", in, err)
 	}
 
 	// 4. 生成token
