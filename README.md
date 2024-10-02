@@ -54,7 +54,14 @@
 
 
 ```
+#### 测试用例
+``` text
+nickname    Qwyk        peninsula   admin       xiaoming    xiaohong    xiaowang
+phone       17309710356 18239655309 17344995006 11122223333 22233334444 33344445555
+password    yining2024  yujie2024   admin       123456      123456      123456
 
+
+```
 
 #### 安装教程
 
@@ -67,6 +74,8 @@
 1.  xxxx
 2.  xxxx
 3.  xxxx
+
+
 
 #### 参与贡献
 

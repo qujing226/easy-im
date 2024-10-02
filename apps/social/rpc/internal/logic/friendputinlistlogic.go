@@ -3,8 +3,10 @@ package logic
 import (
 	"context"
 	"easy-chat/apps/social/rpc/internal/svc"
-
+	"easy-chat/apps/social/rpc/models"
 	"easy-chat/apps/social/rpc/social"
+	"easy-chat/pkg/xerr"
+	"github.com/pkg/errors"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -25,6 +27,29 @@ func NewFriendPutInListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *F
 
 func (l *FriendPutInListLogic) FriendPutInList(in *social.FriendPutInListReq) (*social.FriendPutInListResp, error) {
 	// todo: add your logic here and delete this line
+	// 获取好友请求列表
+	var friendReqList []models.FriendRequest
+	result := l.svcCtx.CSvc.DB.Where("user_id = ?", in.UserId).Find(&friendReqList)
+	if result.Error != nil {
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find friend request list by req_uid %v err %v", in.UserId, result.Error)
+	}
+	if result.RowsAffected == 0 {
+		return nil, errors.WithStack(xerr.FriendReqListNotFound)
+	}
+	var friends []*social.FriendRequests
 
-	return &social.FriendPutInListResp{}, nil
+	for _, friend := range friendReqList {
+		friends = append(friends, &social.FriendRequests{
+			Id:           friend.ID,
+			UserId:       friend.UserID,
+			ReqUid:       friend.ReqUID,
+			ReqMsg:       friend.ReqMsg,
+			ReqTime:      friend.ReqTime.Unix(),
+			HandleResult: int32(friend.HandleResult),
+		})
+	}
+
+	return &social.FriendPutInListResp{
+		List: friends,
+	}, nil
 }

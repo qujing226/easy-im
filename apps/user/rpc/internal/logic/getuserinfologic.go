@@ -46,8 +46,8 @@ func (l *GetUserInfoLogic) GetUserInfo(in *user.GetUserInfoReq) (*user.GetUserIn
 		Avatar:   ur.Avatar,
 		Nickname: ur.Nickname,
 		Phone:    ur.Phone,
-		Status:   int32(ur.Status),
-		Sex:      int32(ur.Sex),
+		Status:   int32(*ur.Status),
+		Sex:      int32(*ur.Sex),
 	}
 	return &user.GetUserInfoResp{User: &userEntity}, nil
 }

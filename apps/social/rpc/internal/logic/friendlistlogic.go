@@ -4,11 +4,9 @@ import (
 	"context"
 	"easy-chat/apps/social/rpc/internal/svc"
 	"easy-chat/apps/social/rpc/models"
+	"easy-chat/apps/social/rpc/social"
 	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
-	"gorm.io/gorm"
-
-	"easy-chat/apps/social/rpc/social"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -31,12 +29,12 @@ func (l *FriendListLogic) FriendList(in *social.FriendListReq) (*social.FriendLi
 	// todo: add your logic here and delete this line
 	// 查询 friend 列表
 	var friendList []models.Friend
-	err := l.svcCtx.CSvc.DB.Where("user_id = ?", in.UserId).Find(&friendList).Error
-	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			return nil, errors.WithStack(xerr.FrinndListNotFound)
-		}
-		return nil, errors.Wrapf(xerr.NewDBErr(), "find friend list by user_id %v err %v", in.UserId, err)
+	result := l.svcCtx.CSvc.DB.Where("user_id = ?", in.UserId).Find(&friendList)
+	if result.Error != nil {
+		return nil, errors.Wrapf(xerr.NewDBErr(), "find friend list by user_id %v err %v", in.UserId, result.Error)
+	}
+	if result.RowsAffected == 0 {
+		return nil, errors.WithStack(xerr.FriendListNotFound)
 	}
 
 	var friends []*social.Friends

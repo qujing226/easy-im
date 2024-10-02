@@ -23,9 +23,21 @@ func TestFriendPutInHandleLogic_FriendPutInHandle(t *testing.T) {
 			name: "name1",
 			args: args{
 				in: &social.FriendPutInHandleReq{
-					FriendReqId:  "1840961301694648320",
-					UserId:       "1840324474826657792",
-					HandleResult: 0,
+					FriendReqId:  "1841490323889459200",
+					UserId:       "1841486243565670400",
+					HandleResult: 2,
+				},
+			},
+			want:    &social.FriendPutInHandleResp{},
+			wantErr: false,
+		},
+		{
+			name: "name1",
+			args: args{
+				in: &social.FriendPutInHandleReq{
+					FriendReqId:  "1841490325604929536",
+					UserId:       "1841486293704380416",
+					HandleResult: 3,
 				},
 			},
 			want:    &social.FriendPutInHandleResp{},

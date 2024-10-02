@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-var configFile = flag.String("f", "../etc/dev/api.yaml", "the config file")
+var configFile = flag.String("f", "../etc/dev/user.yaml", "the config file")
 
 var svcCtx *svc.ServiceContext
 
@@ -32,12 +32,57 @@ func TestRegisterLogic_Register(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "1", args: args{in: &user.RegisterReq{
+			name: "name1", args: args{in: &user.RegisterReq{
 				Phone:    "11122223333",
+				Password: "yujie2024",
+				Nickname: "peninsula",
+				Avatar:   "",
+				Sex:      1,
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "name2", args: args{in: &user.RegisterReq{
+				Phone:    "17309710356",
+				Password: "yining2024",
+				Nickname: "Qwyk",
+				Avatar:   "",
+				Sex:      1,
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "name3", args: args{in: &user.RegisterReq{
+				Phone:    "17344995006",
 				Password: "admin",
 				Nickname: "admin",
 				Avatar:   "",
+				Sex:      1,
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "name4", args: args{in: &user.RegisterReq{
+				Phone:    "11122223333",
+				Password: "123456",
+				Nickname: "xiaoming",
+				Avatar:   "",
+				Sex:      1,
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "name5", args: args{in: &user.RegisterReq{
+				Phone:    "22233334444",
+				Password: "123456",
+				Nickname: "xiaohong",
+				Avatar:   "",
 				Sex:      0,
+			}}, want: true, wantErr: false,
+		},
+		{
+			name: "name6", args: args{in: &user.RegisterReq{
+				Phone:    "33344445555",
+				Password: "123456",
+				Nickname: "xiaowang",
+				Avatar:   "",
+				Sex:      1,
 			}}, want: true, wantErr: false,
 		},
 	}
@@ -80,10 +125,9 @@ func TestLoginLogic_Login(t *testing.T) {
 			got, err := l.Login(tt.args.in)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Login() error = %v, wantErr %v", err, tt.wantErr)
-				return
 			}
 			if !tt.wantErr {
-				t.Log(tt.name, got)
+				t.Log(tt.name, got, err)
 			}
 		})
 	}

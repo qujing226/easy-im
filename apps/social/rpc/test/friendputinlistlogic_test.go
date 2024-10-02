@@ -7,9 +7,9 @@ import (
 	"testing"
 )
 
-func TestFriendListLogic_FriendList(t *testing.T) {
+func TestFriendPutInListLogic_FriendPutInList(t *testing.T) {
 	type args struct {
-		in *social.FriendListReq
+		in *social.FriendPutInListReq
 	}
 	tests := []struct {
 		name    string
@@ -21,18 +21,8 @@ func TestFriendListLogic_FriendList(t *testing.T) {
 		{
 			name: "name1",
 			args: args{
-				in: &social.FriendListReq{
+				in: &social.FriendPutInListReq{
 					UserId: "1841486189794693120",
-				},
-			},
-			want:    true,
-			wantErr: false,
-		},
-		{
-			name: "name2",
-			args: args{
-				in: &social.FriendListReq{
-					UserId: "1841486243565670400",
 				},
 			},
 			want:    true,
@@ -41,13 +31,13 @@ func TestFriendListLogic_FriendList(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			l := logic.NewFriendListLogic(context.Background(), svcCtx)
-			got, err := l.FriendList(tt.args.in)
+			l := logic.NewFriendPutInListLogic(context.Background(), svcCtx)
+			got, err := l.FriendPutInList(tt.args.in)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("FriendList() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("FriendPutInList() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if !tt.wantErr {
-				l.Logger.Infof("got: %v", got)
+				l.Logger.Infof("FriendPutInList() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -6,6 +6,7 @@ import (
 	"easy-chat/pkg/ctxdata"
 	"easy-chat/pkg/encrypy"
 	"easy-chat/pkg/suid"
+	"easy-chat/pkg/utils"
 	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
 	"time"
@@ -46,14 +47,12 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 
 	// 2.定义新增用户
 	U := &models.User{
-		ID:        suid.GenerateID(),
-		Avatar:    in.Avatar,
-		Nickname:  in.Nickname,
-		Phone:     in.Phone,
-		Status:    0,
-		Sex:       int8(in.Sex),
-		CreatedAt: time.Time{},
-		UpdatedAt: time.Time{},
+		ID:       suid.GenerateID(),
+		Avatar:   in.Avatar,
+		Nickname: in.Nickname,
+		Phone:    in.Phone,
+		Status:   utils.ConvertToInt8(0),
+		Sex:      utils.ConvertToInt8(in.Sex),
 	}
 
 	if in.Password != "" {
@@ -61,7 +60,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		if err != nil {
 			return nil, errors.Wrapf(xerr.NewServerCommonErr(), "passwordHash gen err %v", err)
 		}
-		u.Password = string(pass)
+		U.Password = string(pass)
 	}
 	// 3.保存用户
 	err = l.svcCtx.CSvc.CreateUser(U)

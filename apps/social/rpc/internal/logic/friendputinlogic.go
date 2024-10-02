@@ -43,7 +43,7 @@ func (l *FriendPutInLogic) FriendPutIn(in *social.FriendPutInReq) (*social.Frien
 	}
 	// 2. 是否已经有过申请，请申请尚未通过
 	var friendReq models.FriendRequest
-	err = l.svcCtx.CSvc.DB.Where("req_uid = ? and user_id = ? and handle_result != ?", in.ReqUid, in.UserId, status.PassHandlerResul).First(&friendReq).Error
+	err = l.svcCtx.CSvc.DB.Where("req_uid = ? and user_id = ? and handle_result != ?", in.ReqUid, in.UserId, status.PassHandlerResult).First(&friendReq).Error
 	if err == nil {
 		return nil, errors.WithStack(xerr.FriendRequestOnPending)
 	}

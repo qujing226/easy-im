@@ -58,8 +58,8 @@ func (l *FindUserLogic) FindUser(in *user.FindUserReq) (*user.FindUserResp, erro
 			Avatar:   u.Avatar,
 			Nickname: u.Nickname,
 			Phone:    u.Phone,
-			Status:   int32(u.Status),
-			Sex:      int32(u.Sex),
+			Status:   int32(*u.Status),
+			Sex:      int32(*u.Sex),
 		}
 	}
 

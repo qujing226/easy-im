@@ -5,7 +5,22 @@ type HandlerResult int8
 
 const (
 	PendingHandlerResult HandlerResult = 1 + iota
-	PassHandlerResul
-	RefuseHandlerResul
-	CancelHandlerResul
+	PassHandlerResult
+	RefuseHandlerResult
+	CancelHandlerResult
+)
+
+type GroupMemberRoleLevel int8
+
+const (
+	GroupMemberRoleLevelOwner GroupMemberRoleLevel = 1 + iota
+	GroupMemberRoleLevelAdmin
+	GroupMemberRoleLevelMember
+)
+type GroupType int8
+
+const (
+	GroupTypeNormal GroupType = 1 + iota
+	GroupTypePrivate
+	GroupTypePublic
 )
