@@ -83,7 +83,7 @@ func (l *GroupPutInHandleLogic) GroupPutInHandle(in *social.GroupPutInHandleReq)
 				GroupID:     groupReq.GroupID,
 				UserID:      groupReq.ReqID, // 不确定这俩爹username是指ID还是nickname
 				RoleLevel:   status.GroupMemberRoleLevelMember,
-				JoinTime:    time.Time{},
+				JoinTime:    time.Now(),
 				JoinSource:  groupReq.JoinSource,
 				InviterUID:  groupReq.InviterUserID,
 				OperatorUID: groupReq.HandleUserID,

@@ -22,7 +22,7 @@ func TestFriendListLogic_FriendList(t *testing.T) {
 			name: "name1",
 			args: args{
 				in: &social.FriendListReq{
-					UserId: "1841486189794693120",
+					UserId: "1842843962742673408",
 				},
 			},
 			want:    true,
@@ -32,7 +32,7 @@ func TestFriendListLogic_FriendList(t *testing.T) {
 			name: "name2",
 			args: args{
 				in: &social.FriendListReq{
-					UserId: "1841486243565670400",
+					UserId: "1842843971269693440",
 				},
 			},
 			want:    true,

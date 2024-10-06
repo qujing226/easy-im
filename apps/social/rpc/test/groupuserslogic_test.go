@@ -22,7 +22,7 @@ func TestGroupUsersLogic_GroupUsers(t *testing.T) {
 			name: "name1",
 			args: args{
 				in: &social.GroupUsersReq{
-					GroupId: "1841495356521582592",
+					GroupId: "1842848623063207936",
 				},
 			},
 			want:    true,
@@ -32,7 +32,7 @@ func TestGroupUsersLogic_GroupUsers(t *testing.T) {
 			name: "name2",
 			args: args{
 				in: &social.GroupUsersReq{
-					GroupId: "1841496420683616256",
+					GroupId: "1842848625386852352",
 				},
 			},
 			want:    true,

@@ -22,7 +22,7 @@ func TestFriendPutInListLogic_FriendPutInList(t *testing.T) {
 			name: "name1",
 			args: args{
 				in: &social.FriendPutInListReq{
-					UserId: "1841486189794693120",
+					UserId: "1842843962742673408",
 				},
 			},
 			want:    true,

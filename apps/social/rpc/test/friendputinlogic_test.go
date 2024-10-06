@@ -37,8 +37,19 @@ func TestFriendPutInLogic_FriendPutIn(t *testing.T) {
 			name: "test1",
 			args: args{
 				in: &social.FriendPutInReq{
-					UserId:  "1841486189794693120",
-					ReqUid:  "1841486243565670400",
+					UserId:  "1842843962742673408",
+					ReqUid:  "1842843971269693440",
+					ReqMsg:  "hello",
+					ReqTime: time.Now().Unix(),
+				},
+			}, want: true, wantErr: false,
+		},
+		{
+			name: "test1",
+			args: args{
+				in: &social.FriendPutInReq{
+					UserId:  "1842843962742673408",
+					ReqUid:  "1842843978811052032",
 					ReqMsg:  "hello",
 					ReqTime: time.Now().Unix(),
 				},
@@ -48,8 +59,8 @@ func TestFriendPutInLogic_FriendPutIn(t *testing.T) {
 			name: "test2",
 			args: args{
 				in: &social.FriendPutInReq{
-					UserId:  "1841486189794693120",
-					ReqUid:  "1841486293704380416",
+					UserId:  "1842843962742673408",
+					ReqUid:  "1842843985727459328",
 					ReqMsg:  "hello~!",
 					ReqTime: time.Now().Unix(),
 				},

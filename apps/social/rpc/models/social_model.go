@@ -28,7 +28,7 @@ type FriendRequest struct {
 type Group struct {
 	ID              string    `gorm:"type:varchar(24);primaryKey"`
 	Name            string    `gorm:"type:varchar(255);not null"`
-	Icon            string    `gorm:"type:varchar(255);not null"`
+	Icon            string    `gorm:"type:varchar(255);not null;default:'https://c-ssl.duitang.com/uploads/item/201802/24/20180224083913_yhrX2.jpeg'"`
 	Status          *int8     `gorm:"type:tinyint"`
 	CreatorUID      string    `gorm:"type:varchar(64);not null"`
 	GroupType       *int8     `gorm:"type:tinyint;not null"`

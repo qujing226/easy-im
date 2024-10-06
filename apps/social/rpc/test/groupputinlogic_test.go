@@ -23,12 +23,12 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "管理员邀请进群，期望能直接看到群成员",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1841495356521582592",
-					ReqId:      "1841486293704380416",
+					GroupId:    "1842848623063207936",
+					ReqId:      "1842843971269693440",
 					ReqMsg:     "我是高端go玩家",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 0,
-					InviterUid: "1841486189794693120",
+					InviterUid: "1842843962742673408",
 				},
 			},
 			want:    true,
@@ -38,8 +38,8 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "正常方式申请",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1841495356521582592",
-					ReqId:      "1841486243565670400",
+					GroupId:    "1842848623063207936",
+					ReqId:      "1842843978811052032",
 					ReqMsg:     "我是低端go玩家QWQ",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 1,
@@ -53,8 +53,8 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "该群不需要验证便可加入",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1841496420683616256",
-					ReqId:      "1841486293704380416",
+					GroupId:    "1842848625386852352",
+					ReqId:      "1842843985727459328",
 					ReqMsg:     "扫黄大队长请求加入QWQ",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 2,

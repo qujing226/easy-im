@@ -19,13 +19,13 @@ func TestGroupPutInHandleLogic_GroupPutInHandle(t *testing.T) {
 	}{
 		// TODO: Add test cases.
 		{
-			name: "正常方式申请,进行拒绝",
+			name: "正常方式申请,同意",
 			args: args{
 				in: &social.GroupPutInHandleReq{
-					GroupReqId:    "1841501295475691520",
-					GroupId:       "1841495356521582592",
-					HandleUid:     "1841486243565670400",
-					HandleResult:  3,
+					GroupReqId:    "1842849198509133824",
+					GroupId:       "1842848623063207936",
+					HandleUid:     "1842843962742673408",
+					HandleResult:  2,
 					Username:      "",
 					UserAvatarUrl: "",
 				},
