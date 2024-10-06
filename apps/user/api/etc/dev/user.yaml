@@ -5,7 +5,7 @@ UserRpc:
   Etcd:
     Hosts:
       - 118.178.120.11:3379
-    Key: api.rpc
+    Key: user.rpc
 
 JwtAuth:
   AccessSecret: easy-chat
