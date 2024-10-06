@@ -2,7 +2,7 @@ version: "3"
 
 services:
   etcd:
-    image: bitnami/etcd:3.4.15
+    image: bitnami/etcd:latest
     container_name: etcd
     ports:
       - "3379:2379"
