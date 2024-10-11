@@ -23,8 +23,8 @@ func TestFriendPutInHandleLogic_FriendPutInHandle(t *testing.T) {
 			name: "name1",
 			args: args{
 				in: &social.FriendPutInHandleReq{
-					FriendReqId:  "1842845531840188416",
-					UserId:       "1842843971269693440",
+					FriendReqId:  "1843308560872640512",
+					UserId:       "1843306302982328320",
 					HandleResult: 2,
 				},
 			},
@@ -35,8 +35,8 @@ func TestFriendPutInHandleLogic_FriendPutInHandle(t *testing.T) {
 			name: "name2",
 			args: args{
 				in: &social.FriendPutInHandleReq{
-					FriendReqId:  "1842845535233380352",
-					UserId:       "1842843978811052032",
+					FriendReqId:  "1843308564307775488",
+					UserId:       "1843306311148638208",
 					HandleResult: 2,
 				},
 			},
@@ -47,9 +47,21 @@ func TestFriendPutInHandleLogic_FriendPutInHandle(t *testing.T) {
 			name: "name3",
 			args: args{
 				in: &social.FriendPutInHandleReq{
-					FriendReqId:  "1842845538945339392",
-					UserId:       "1842843985727459328",
+					FriendReqId:  "1843308567755493376",
+					UserId:       "1843306319776321536",
 					HandleResult: 2,
+				},
+			},
+			want:    &social.FriendPutInHandleResp{},
+			wantErr: false,
+		},
+		{
+			name: "name3",
+			args: args{
+				in: &social.FriendPutInHandleReq{
+					FriendReqId:  "1843308571182239744",
+					UserId:       "1843306319776321536",
+					HandleResult: 3,
 				},
 			},
 			want:    &social.FriendPutInHandleResp{},

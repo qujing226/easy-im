@@ -6,9 +6,9 @@ package server
 
 import (
 	"context"
-	logic2 "easy-chat/apps/social/rpc/internal/logic"
-	"easy-chat/apps/social/rpc/internal/svc"
 
+	"easy-chat/apps/social/rpc/internal/logic"
+	"easy-chat/apps/social/rpc/internal/svc"
 	"easy-chat/apps/social/rpc/social"
 )
 
@@ -24,52 +24,52 @@ func NewSocialServer(svcCtx *svc.ServiceContext) *SocialServer {
 }
 
 func (s *SocialServer) FriendPutIn(ctx context.Context, in *social.FriendPutInReq) (*social.FriendPutInResp, error) {
-	l := logic2.NewFriendPutInLogic(ctx, s.svcCtx)
+	l := logic.NewFriendPutInLogic(ctx, s.svcCtx)
 	return l.FriendPutIn(in)
 }
 
 func (s *SocialServer) FriendPutInHandle(ctx context.Context, in *social.FriendPutInHandleReq) (*social.FriendPutInHandleResp, error) {
-	l := logic2.NewFriendPutInHandleLogic(ctx, s.svcCtx)
+	l := logic.NewFriendPutInHandleLogic(ctx, s.svcCtx)
 	return l.FriendPutInHandle(in)
 }
 
 func (s *SocialServer) FriendPutInList(ctx context.Context, in *social.FriendPutInListReq) (*social.FriendPutInListResp, error) {
-	l := logic2.NewFriendPutInListLogic(ctx, s.svcCtx)
+	l := logic.NewFriendPutInListLogic(ctx, s.svcCtx)
 	return l.FriendPutInList(in)
 }
 
 func (s *SocialServer) FriendList(ctx context.Context, in *social.FriendListReq) (*social.FriendListResp, error) {
-	l := logic2.NewFriendListLogic(ctx, s.svcCtx)
+	l := logic.NewFriendListLogic(ctx, s.svcCtx)
 	return l.FriendList(in)
 }
 
 // 群要求
 func (s *SocialServer) GroupCreate(ctx context.Context, in *social.GroupCreateReq) (*social.GroupCreateResp, error) {
-	l := logic2.NewGroupCreateLogic(ctx, s.svcCtx)
+	l := logic.NewGroupCreateLogic(ctx, s.svcCtx)
 	return l.GroupCreate(in)
 }
 
 func (s *SocialServer) GroupPutin(ctx context.Context, in *social.GroupPutinReq) (*social.GroupPutinResp, error) {
-	l := logic2.NewGroupPutinLogic(ctx, s.svcCtx)
+	l := logic.NewGroupPutinLogic(ctx, s.svcCtx)
 	return l.GroupPutin(in)
 }
 
 func (s *SocialServer) GroupPutinList(ctx context.Context, in *social.GroupPutinListReq) (*social.GroupPutinListResp, error) {
-	l := logic2.NewGroupPutinListLogic(ctx, s.svcCtx)
+	l := logic.NewGroupPutinListLogic(ctx, s.svcCtx)
 	return l.GroupPutinList(in)
 }
 
 func (s *SocialServer) GroupPutInHandle(ctx context.Context, in *social.GroupPutInHandleReq) (*social.GroupPutInHandleResp, error) {
-	l := logic2.NewGroupPutInHandleLogic(ctx, s.svcCtx)
+	l := logic.NewGroupPutInHandleLogic(ctx, s.svcCtx)
 	return l.GroupPutInHandle(in)
 }
 
 func (s *SocialServer) GroupList(ctx context.Context, in *social.GroupListReq) (*social.GroupListResp, error) {
-	l := logic2.NewGroupListLogic(ctx, s.svcCtx)
+	l := logic.NewGroupListLogic(ctx, s.svcCtx)
 	return l.GroupList(in)
 }
 
 func (s *SocialServer) GroupUsers(ctx context.Context, in *social.GroupUsersReq) (*social.GroupUsersResp, error) {
-	l := logic2.NewGroupUsersLogic(ctx, s.svcCtx)
+	l := logic.NewGroupUsersLogic(ctx, s.svcCtx)
 	return l.GroupUsers(in)
 }

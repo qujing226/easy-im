@@ -2,6 +2,8 @@ package friend
 
 import (
 	"context"
+	"easy-chat/apps/social/rpc/social"
+	"easy-chat/pkg/ctxdata"
 
 	"easy-chat/apps/social/api/internal/svc"
 	"easy-chat/apps/social/api/internal/types"
@@ -26,6 +28,31 @@ func NewFriendPutInListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *F
 
 func (l *FriendPutInListLogic) FriendPutInList(req *types.FriendPutInListReq) (resp *types.FriendPutInListResp, err error) {
 	// todo: add your logic here and delete this line
+	uid := ctxdata.GetUId(l.ctx)
 
+	friendsReqList, err := l.svcCtx.Social.FriendPutInList(l.ctx, &social.FriendPutInListReq{
+		UserId: uid,
+	})
+	if err != nil {
+		return nil, err
+	}
+	if len(friendsReqList.List) == 0 {
+		return &types.FriendPutInListResp{}, nil
+	}
+	var members []*types.FriendRequests
+	for _, requests := range friendsReqList.List {
+		members = append(members, &types.FriendRequests{
+			Id:           requests.Id,
+			UserId:       requests.UserId,
+			ReqUid:       requests.ReqUid,
+			ReqMsg:       requests.ReqMsg,
+			ReqTime:      requests.ReqTime,
+			HandleResult: int(requests.HandleResult),
+			HandleMsg:    requests.HandleMsg,
+		})
+	}
+	resp = &types.FriendPutInListResp{
+		List: members,
+	}
 	return
 }

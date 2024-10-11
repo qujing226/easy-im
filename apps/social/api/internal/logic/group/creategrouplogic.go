@@ -2,6 +2,8 @@ package group
 
 import (
 	"context"
+	"easy-chat/apps/social/rpc/social"
+	"easy-chat/pkg/ctxdata"
 
 	"easy-chat/apps/social/api/internal/svc"
 	"easy-chat/apps/social/api/internal/types"
@@ -26,6 +28,12 @@ func NewCreateGroupLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Creat
 
 func (l *CreateGroupLogic) CreateGroup(req *types.GroupCreateReq) (resp *types.GroupCreateResp, err error) {
 	// todo: add your logic here and delete this line
-
+	uid := ctxdata.GetUId(l.ctx)
+	_, err = l.svcCtx.Social.GroupCreate(l.ctx, &social.GroupCreateReq{
+		Name:       req.Name,
+		Icon:       req.Icon,
+		Status:     1,
+		CreatorUid: uid,
+	})
 	return
 }

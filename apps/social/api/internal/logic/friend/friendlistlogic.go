@@ -8,8 +8,6 @@ import (
 	"easy-chat/apps/user/rpc/user"
 	"easy-chat/apps/user/rpc/userclient"
 	"easy-chat/pkg/ctxdata"
-	"strconv"
-
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -44,7 +42,7 @@ func (l *FriendListLogic) FriendList(req *types.FriendListReq) (resp *types.Frie
 	}
 
 	// 获取好友的个人信息
-	ids := make([]string, len(friends.List))
+	ids := make([]string, 0, len(friends.List))
 	for _, f := range friends.List {
 		ids = append(ids, f.FriendUid)
 	}
@@ -62,9 +60,8 @@ func (l *FriendListLogic) FriendList(req *types.FriendListReq) (resp *types.Frie
 
 	respList := make([]*types.Friends, len(friends.List))
 	for index, f := range friends.List {
-		id, _ := strconv.Atoi(f.Id)
 		respList[index] = &types.Friends{
-			Id:        string(rune(id)), // 可能存在精度损失问题
+			Id:        f.Id,
 			FriendUid: f.FriendUid,
 			Remark:    f.Remark,
 			Avatar:    userRecords[f.FriendUid].Avatar,

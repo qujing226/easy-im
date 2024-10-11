@@ -24,7 +24,7 @@ func TestGroupCreateLogic_GroupCreate(t *testing.T) {
 				in: &social.GroupCreateReq{
 					Name:       "Go语言开发者(4)",
 					Status:     0,
-					CreatorUid: "1842843962742673408",
+					CreatorUid: "1843306294396588032",
 				},
 			},
 			want:    true,
@@ -36,7 +36,7 @@ func TestGroupCreateLogic_GroupCreate(t *testing.T) {
 				in: &social.GroupCreateReq{
 					Name:       "扫黄小分队",
 					Status:     0,
-					CreatorUid: "1842843971269693440",
+					CreatorUid: "1843306302982328320",
 				},
 			},
 			want:    true,

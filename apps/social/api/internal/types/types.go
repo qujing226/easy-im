@@ -100,6 +100,7 @@ type GroupPutInRep struct {
 	ReqMsg     string `json:"req_msg,omitempty"`
 	ReqTime    int64  `json:"req_time,omitempty"`
 	JoinSource int64  `json:"join_source,omitempty"`
+	IviterUid  string `json:"inviter_uid,omitempty"`
 }
 
 type GroupPutInResp struct {

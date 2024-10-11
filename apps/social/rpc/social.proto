@@ -20,6 +20,7 @@ message FriendRequests {
   string reqMsg = 4;
   int64  reqTime = 5;
   int32  handleResult = 6; // 处理结果
+  string handleMsg = 7;
 }
 
 message Groups {
@@ -55,6 +56,7 @@ message GroupRequests {
   string inviterUid = 7;
   string handleUid = 8;
   int32  handleResult = 9; // 处理结果
+  int64  handleTime = 10;
 }
 
 // req resp

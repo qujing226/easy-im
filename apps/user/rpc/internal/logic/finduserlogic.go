@@ -6,6 +6,7 @@ import (
 	"easy-chat/apps/user/rpc/models"
 	"easy-chat/apps/user/rpc/user"
 	"easy-chat/pkg/xerr"
+	"fmt"
 	"github.com/pkg/errors"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -39,6 +40,7 @@ func (l *FindUserLogic) FindUser(in *user.FindUserReq) (*user.FindUserResp, erro
 		users = nil
 		err := l.svcCtx.CSvc.GetUserByIds(&users, in.Ids)
 		if err != nil {
+			fmt.Printf("\n\n\n %v \n\n\n", err)
 			return nil, errors.Wrapf(err, "failed to find users by IDs: %v", in.Ids)
 		}
 	} else if in.Name != "" {

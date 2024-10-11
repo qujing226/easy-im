@@ -46,6 +46,7 @@ func (l *FriendPutInListLogic) FriendPutInList(in *social.FriendPutInListReq) (*
 			ReqMsg:       friend.ReqMsg,
 			ReqTime:      friend.ReqTime.Unix(),
 			HandleResult: int32(friend.HandleResult),
+			HandleMsg: friend.HandleMsg,
 		})
 	}
 

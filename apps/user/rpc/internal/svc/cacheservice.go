@@ -80,20 +80,16 @@ func (s *CacheService) GetUserByIds(users *[]models.User, ids []string) error {
 			*users = append(*users, user)
 			continue
 		}
-
+		fmt.Println(ids, id)
 		err = s.DB.Where("id = ?", id).First(&user).Error
 		if err != nil {
-
 			return err
 		}
 		err = s.SetUserCache(&user, cacheKey)
 		if err != nil {
-			fmt.Println(err)
 			return err
 		}
-
 		*users = append(*users, user)
-		fmt.Println(users)
 	}
 	return nil
 }

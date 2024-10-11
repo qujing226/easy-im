@@ -7,6 +7,7 @@ import (
 	"easy-chat/pkg/status"
 	"easy-chat/pkg/suid"
 	"easy-chat/pkg/xerr"
+	"fmt"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 	"time"
@@ -32,6 +33,7 @@ func NewFriendPutInLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Frien
 
 func (l *FriendPutInLogic) FriendPutIn(in *social.FriendPutInReq) (*social.FriendPutInResp, error) {
 	// todo: add your logic here and delete this line
+	fmt.Println("---------------------------------------------------------")
 	var friend models.Friend
 	// 1. 申请人是否与目标是好友关系 此操作不需要使用缓存
 	err := l.svcCtx.CSvc.DB.Where("user_id = ? and friend_uid = ?", in.UserId, in.ReqUid).First(&friend).Error
@@ -41,6 +43,7 @@ func (l *FriendPutInLogic) FriendPutIn(in *social.FriendPutInReq) (*social.Frien
 	if err != gorm.ErrRecordNotFound {
 		return nil, errors.Wrapf(xerr.NewDBErr(), "find friend by user_id %v and friend_uid %v err %v", in.UserId, in.ReqUid, err)
 	}
+	fmt.Println("---------------------------------------------------------")
 	// 2. 是否已经有过申请，请申请尚未通过
 	var friendReq models.FriendRequest
 	err = l.svcCtx.CSvc.DB.Where("req_uid = ? and user_id = ? and handle_result != ?", in.ReqUid, in.UserId, status.PassHandlerResult).First(&friendReq).Error

@@ -34,34 +34,45 @@ func TestFriendPutInLogic_FriendPutIn(t *testing.T) {
 	}{
 		// TODO: Add test cases.
 		{
-			name: "test1",
+			name: "admin and ming",
 			args: args{
 				in: &social.FriendPutInReq{
-					UserId:  "1842843962742673408",
-					ReqUid:  "1842843971269693440",
+					UserId:  "1843306294396588032",
+					ReqUid:  "1843306302982328320",
 					ReqMsg:  "hello",
 					ReqTime: time.Now().Unix(),
 				},
 			}, want: true, wantErr: false,
 		},
 		{
-			name: "test1",
+			name: "admin and hong",
 			args: args{
 				in: &social.FriendPutInReq{
-					UserId:  "1842843962742673408",
-					ReqUid:  "1842843978811052032",
+					UserId:  "1843306294396588032",
+					ReqUid:  "1843306311148638208",
 					ReqMsg:  "hello",
 					ReqTime: time.Now().Unix(),
 				},
 			}, want: true, wantErr: false,
 		},
 		{
-			name: "test2",
+			name: "admin and wang",
 			args: args{
 				in: &social.FriendPutInReq{
-					UserId:  "1842843962742673408",
-					ReqUid:  "1842843985727459328",
+					UserId:  "1843306294396588032",
+					ReqUid:  "1843306319776321536",
 					ReqMsg:  "hello~!",
+					ReqTime: time.Now().Unix(),
+				},
+			}, want: true, wantErr: false,
+		},
+		{
+			name: "ming and wang, refused",
+			args: args{
+				in: &social.FriendPutInReq{
+					UserId:  "1843306302982328320",
+					ReqUid:  "1843306319776321536",
+					ReqMsg:  "son of bitch!",
 					ReqTime: time.Now().Unix(),
 				},
 			}, want: true, wantErr: false,

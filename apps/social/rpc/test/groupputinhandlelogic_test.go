@@ -22,9 +22,24 @@ func TestGroupPutInHandleLogic_GroupPutInHandle(t *testing.T) {
 			name: "正常方式申请,同意",
 			args: args{
 				in: &social.GroupPutInHandleReq{
-					GroupReqId:    "1842849198509133824",
-					GroupId:       "1842848623063207936",
-					HandleUid:     "1842843962742673408",
+					GroupReqId:    "1843312468886032384",
+					GroupId:       "1843311241150337024",
+					HandleUid:     "1843306294396588032",
+					HandleResult:  2,
+					Username:      "",
+					UserAvatarUrl: "",
+				},
+			},
+			want:    true,
+			wantErr: false,
+		},
+		{
+			name: "正常方式申请,同意",
+			args: args{
+				in: &social.GroupPutInHandleReq{
+					GroupReqId:    "1843312469716504576",
+					GroupId:       "1843311241150337024",
+					HandleUid:     "1843306294396588032",
 					HandleResult:  2,
 					Username:      "",
 					UserAvatarUrl: "",

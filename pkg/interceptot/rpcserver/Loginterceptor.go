@@ -13,7 +13,7 @@ import (
 func LogInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInfo,
 	handler grpc.UnaryHandler) (resp any, err error) {
 	resp, err = handler(ctx, req)
-	if err != nil {
+	if err == nil {
 		return resp, err
 	}
 

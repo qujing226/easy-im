@@ -1,17 +1,15 @@
 package main
 
 import (
-	"easy-chat/pkg/resultx"
-	"flag"
-	"fmt"
-	"github.com/zeromicro/go-zero/rest/httpx"
-
 	"easy-chat/apps/social/api/internal/config"
 	"easy-chat/apps/social/api/internal/handler"
 	"easy-chat/apps/social/api/internal/svc"
-
+	"easy-chat/pkg/resultx"
+	"flag"
+	"fmt"
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 var configFile = flag.String("f", "etc/dev/social.yaml", "the config file")

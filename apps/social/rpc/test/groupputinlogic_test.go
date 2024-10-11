@@ -4,6 +4,7 @@ import (
 	"context"
 	"easy-chat/apps/social/rpc/internal/logic"
 	"easy-chat/apps/social/rpc/social"
+	"fmt"
 	"testing"
 	"time"
 )
@@ -23,12 +24,12 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "管理员邀请进群，期望能直接看到群成员",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1842848623063207936",
-					ReqId:      "1842843971269693440",
+					GroupId:    "1843311241150337024",
+					ReqId:      "1843306302982328320",
 					ReqMsg:     "我是高端go玩家",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 0,
-					InviterUid: "1842843962742673408",
+					InviterUid: "1843306294396588032",
 				},
 			},
 			want:    true,
@@ -38,9 +39,9 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "正常方式申请",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1842848623063207936",
-					ReqId:      "1842843978811052032",
-					ReqMsg:     "我是低端go玩家QWQ",
+					GroupId:    "1843311241150337024",
+					ReqId:      "1843306311148638208",
+					ReqMsg:     "我是中端Go玩家hh~",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 1,
 					InviterUid: "",
@@ -53,8 +54,23 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 			name: "该群不需要验证便可加入",
 			args: args{
 				in: &social.GroupPutinReq{
-					GroupId:    "1842848625386852352",
-					ReqId:      "1842843985727459328",
+					GroupId:    "1843311241150337024",
+					ReqId:      "1843306319776321536",
+					ReqMsg:     "我是低端go玩家QWQ",
+					ReqTime:    time.Now().Unix(),
+					JoinSource: 2,
+					InviterUid: "",
+				},
+			},
+			want:    true,
+			wantErr: false,
+		},
+		{
+			name: "该群不需要验证便可加入",
+			args: args{
+				in: &social.GroupPutinReq{
+					GroupId:    "1843311242345713664",
+					ReqId:      "1843306319776321536",
 					ReqMsg:     "扫黄大队长请求加入QWQ",
 					ReqTime:    time.Now().Unix(),
 					JoinSource: 2,
@@ -73,7 +89,7 @@ func TestGroupPutinLogic_GroupPutin(t *testing.T) {
 				t.Errorf("GroupList() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if !tt.wantErr {
-				t.Logf("GroupList() got = %v, want %v", got, tt.want)
+				fmt.Printf("GroupList() got = %v, want %v\n", got, tt.want)
 			}
 		})
 	}

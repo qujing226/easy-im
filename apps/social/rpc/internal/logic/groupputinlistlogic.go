@@ -47,6 +47,7 @@ func (l *GroupPutinListLogic) GroupPutinList(in *social.GroupPutinListReq) (*soc
 			InviterUid:   request.InviterUserID,
 			HandleUid:    request.HandleUserID,
 			HandleResult: int32(request.HandleResult),
+			HandleTime: request.HandleTime.Unix(),
 		})
 	}
 	return &social.GroupPutinListResp{
