@@ -5,7 +5,7 @@ SERVER_TYPE=api
 
 # 测试环境配置
 # docker的镜像发布地址
-DOCKER_PERO_TEST=crpi-4ll7w1qk44676hc7.cn-hangzhou.personal.cr.aliyuncs.com/go-chat-im/user-rpc-dev
+DOCKER_PERO_TEST=crpi-4ll7w1qk44676hc7.cn-hangzhou.personal.cr.aliyuncs.com/go-chat-im/user-api-dev
 # 测试版本
 VERSION_TEST=$(VERSION)
 # 编译的程序名称
