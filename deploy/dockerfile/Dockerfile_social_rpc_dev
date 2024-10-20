@@ -22,7 +22,7 @@ RUN chmod +x /$SERVER_NAME/bin/$SERVER_NAME-$SERVER_TYPE
 
 WORKDIR /$SERVER_NAME
 
-CMD ["/social/bin/social-rpc", "-f", "/social/conf/social.yaml"]
+CMD $RUN_BIN -f $RUN_CONF
 
 
 
