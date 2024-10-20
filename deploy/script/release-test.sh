@@ -3,6 +3,7 @@
 need_start_server_shell=(
   # "rpc.sh"
   "user-rpc-dev.sh"
+  "social-rpc-dev.sh"
   # "api.sh"
   "user-api-dev.sh"
 )
