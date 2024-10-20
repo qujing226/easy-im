@@ -4,7 +4,10 @@ user-rpc-dev:
 social-rpc-dev:
 	@make -f deploy/mk/social-rpc.mk release-test
 
-release-test: user-rpc-dev social-rpc-dev
+user-api-dev:
+	@make -f deploy/mk/user-api.mk release-test
+
+release-test: user-rpc-dev social-rpc-dev user-api-dev
 
 install-server:
 	cd ./deploy/script && chmod +x release-test.sh && ./release-test.sh
