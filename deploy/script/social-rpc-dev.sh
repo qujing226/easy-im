@@ -3,11 +3,6 @@ reso_addr="crpi-4ll7w1qk44676hc7.cn-hangzhou.personal.cr.aliyuncs.com/go-chat-im
 tag="latest"
 container_name="go-chat-im-social-rpc-dev"
 
-username="Peninsular"
-password="yujie2018"
-
-echo $password | docker login $reso_addr -u $username --password-stdin
-
 # 停止容器
 docker stop ${container_name} || true
 # 删除容器

@@ -22,7 +22,6 @@ RUN chmod +x /$SERVER_NAME/bin/$SERVER_NAME-$SERVER_TYPE
 
 WORKDIR /$SERVER_NAME/bin
 
-
 #CMD ["/user/bin/user-rpc", "-f", "/user/conf/user.yaml"]
 CMD $RUN_BIN -f $RUN_CONF
 
