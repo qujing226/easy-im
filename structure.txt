@@ -3,7 +3,7 @@
 │   └── user
 │       ├── api
 │       ├── common
-│       │   ├── model
+│       │   ├── immodels
 │       │   │   └── user.go
 │       │   └── utils
 │       │       └── gorm.go

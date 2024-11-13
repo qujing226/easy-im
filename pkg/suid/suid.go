@@ -1,7 +1,10 @@
 package suid
 
 import (
+	"fmt"
 	"log"
+	"sort"
+	"strconv"
 
 	"github.com/bwmarrin/snowflake"
 )
@@ -33,4 +36,15 @@ func GenerateID() string {
 		log.Fatal("Snowflake Node is not initialized")
 	}
 	return Node.Generate().String()
+}
+
+func CombineId(aid, bid string) string {
+	ids := []string{aid, bid}
+	sort.Slice(ids, func(i, j int) bool {
+		a, _ := strconv.ParseUint(ids[i], 10, 64)
+		b, _ := strconv.ParseUint(ids[j], 10, 64)
+		return a < b
+	})
+
+	return fmt.Sprintf("%v_%v", ids[0], ids[1])
 }

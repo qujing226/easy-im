@@ -6,6 +6,7 @@ need_start_server_shell=(
   "social-rpc-dev.sh"
   # "api.sh"
   "user-api-dev.sh"
+  "social-api-dev.sh"
 )
 
 for i in ${need_start_server_shell[*]}; do

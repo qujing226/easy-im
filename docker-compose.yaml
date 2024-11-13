@@ -46,7 +46,20 @@ services:
     restart: always
     networks:
       easy-chat:
-
+  mongo:
+    image: mongo:4.0
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: easy-chat
+    ports:
+      - "47017:27017"
+    volumes:
+      - ./components/mongo/data:/data/db
+      - /etc/localtime:/etc/localtime
+    restart: always
+    networks:
+      easy-chat:
 networks:
   easy-chat:
     driver: bridge
