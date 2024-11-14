@@ -6,6 +6,18 @@ MsgChatTransfer:
   Brokers:
     - 118.178.120.11:9092
   Group: kafka
-  Topic: msgChatTransfer
+  Topic: MsgChatTransfer
   Offset: first
   Consumers: 1
+
+Mongo:
+  Url: "mongodb://root:easy-chat@118.178.120.11:47017"
+  Db: east-chat
+
+Redisx:
+  Host: 118.178.120.11:16379
+  Type: node
+  Pass: easy-chat
+
+Ws:
+  Host: 127.0.0.1:10090

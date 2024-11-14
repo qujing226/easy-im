@@ -37,7 +37,7 @@ func NewClient(host string, opts ...DailOption) *client {
 
 func (c *client) dail() (*websocket.Conn, error) {
 	u := url.URL{Scheme: "ws", Host: c.host, Path: c.opt.patten}
-	conn, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
+	conn, _, err := websocket.DefaultDialer.Dial(u.String(), c.opt.header)
 	return conn, err
 }
 
@@ -47,8 +47,8 @@ func (c *client) Send(v any) error {
 		return err
 	}
 	err = c.WriteMessage(websocket.TextMessage, data)
-	if err != nil {
-		return err
+	if err == nil {
+		return nil
 	}
 	// todo: 再增加一个重连发送
 	conn, err := c.dail()

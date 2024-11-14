@@ -1,6 +1,8 @@
 package config
 
-import "github.com/zeromicro/go-zero/core/service"
+import (
+	"github.com/zeromicro/go-zero/core/service"
+)
 
 type Config struct {
 	service.ServiceConf
@@ -14,5 +16,10 @@ type Config struct {
 	Mongo struct {
 		Url string
 		Db  string
+	}
+
+	MsgChatTransfer struct {
+		Topic string
+		Addrs []string
 	}
 }

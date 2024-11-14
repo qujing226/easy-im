@@ -21,3 +21,16 @@ type (
 		Msg             `mapstructure:"msg"`
 	}
 )
+
+type (
+	Push struct {
+		ConversationId  string `mapstructure:"conversationId"`
+		status.ChatType `mapstructure:"charType"`
+		SendId          string `mapstructure:"sendId"`
+		RecvId          string `mapstructure:"recvId"`
+		SendTime        int64  `mapstructure:"sendTime"`
+
+		status.MType `mapstructure:"mType"`
+		Content      string `mapstructure:"content"`
+	}
+)
