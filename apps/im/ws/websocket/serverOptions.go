@@ -2,17 +2,17 @@ package websocket
 
 import "time"
 
-type Options func(opt *option)
+type ServerOption func(opt *serverOption)
 
-type option struct {
+type serverOption struct {
 	Authentication
 	patten string
 
 	maxConnectionIdle time.Duration
 }
 
-func newOption(opts ...Options) option {
-	o := option{
+func newOption(opts ...ServerOption) serverOption {
+	o := serverOption{
 		Authentication:    new(authentication),
 		maxConnectionIdle: defaultMaxConnectionIdle,
 		patten:            "/ws",
@@ -23,20 +23,20 @@ func newOption(opts ...Options) option {
 	return o
 }
 
-func WithAuthentication(authentication Authentication) Options {
-	return func(opt *option) {
+func WithAuthentication(authentication Authentication) ServerOption {
+	return func(opt *serverOption) {
 		opt.Authentication = authentication
 	}
 }
 
-func WithHandlerPattern(pattern string) Options {
-	return func(opt *option) {
+func WithHandlerPattern(pattern string) ServerOption {
+	return func(opt *serverOption) {
 		opt.patten = pattern
 	}
 }
 
-func WithServerMaxConnectionIdle(maxConnection time.Duration) Options {
-	return func(opt *option) {
+func WithServerMaxConnectionIdle(maxConnection time.Duration) ServerOption {
+	return func(opt *serverOption) {
 		if maxConnection > 0 {
 			opt.maxConnectionIdle = maxConnection
 		}

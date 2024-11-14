@@ -13,7 +13,7 @@ import (
 type Server struct {
 	sync.RWMutex
 
-	opt            *option
+	opt            *serverOption
 	authentication Authentication
 
 	routes map[string]HandlerFunc
@@ -27,7 +27,7 @@ type Server struct {
 	logx.Logger
 }
 
-func NewServer(addr string, opts ...Options) *Server {
+func NewServer(addr string, opts ...ServerOption) *Server {
 	opt := newOption(opts...)
 	return &Server{
 		addr: addr,
