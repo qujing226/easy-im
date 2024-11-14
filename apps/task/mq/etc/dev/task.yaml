@@ -6,6 +6,6 @@ MsgChatTransfer:
   Brokers:
     - 118.178.120.11:9092
   Group: kafka
-  Topic: msqChatTransfer
+  Topic: msgChatTransfer
   Offset: first
   Consumers: 1
