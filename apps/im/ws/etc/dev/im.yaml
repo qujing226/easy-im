@@ -3,7 +3,6 @@ ListenOn: 0.0.0.0:10090
 
 JwtAuth:
   AccessSecret:  easy-chat
-
 Mongo:
-  Url:"mongodb://root:easy-chat@118.178.120.11:47017"
-  Db:east-chat
+  Url: "mongodb://root:easy-chat@118.178.120.11:47017"
+  Db: east-chat

@@ -14,5 +14,7 @@ type ServiceContext struct {
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
+
+		ChatLogModel: immodels.MustChatLogModel(c.Mongo.Url, c.Mongo.Db),
 	}
 }

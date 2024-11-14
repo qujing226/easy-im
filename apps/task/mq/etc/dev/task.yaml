@@ -1,0 +1,11 @@
+Name: task.mq
+ListenOn: 0.0.0.0:10091
+
+MsgChatTransfer:
+  Name: MsgChatTransfer
+  Brokers:
+    - 118.178.120.11:9092
+  Group: kafka
+  Topic: msqChatTransfer
+  Offset: first
+  Consumers: 1
