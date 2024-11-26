@@ -55,6 +55,7 @@ func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 			" err %v ", in.Phone)
 	}
 	return &user.LoginResp{
+		Id:     u.ID,
 		Token:  token,
 		Expire: now + l.svcCtx.Config.Jwt.AccessExpire,
 	}, nil

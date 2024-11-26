@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"easy-chat/apps/user/rpc/user"
+	"easy-chat/pkg/status"
 	"github.com/jinzhu/copier"
 
 	"easy-chat/apps/user/api/internal/svc"
@@ -41,5 +42,9 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 		return nil, err
 	}
 	resp = &res
+
+	// 处理登入的业务
+	err = l.svcCtx.Redis.HsetCtx(l.ctx, status.REDIS_ONLINE_USER, loginResp.Id, "1")
+
 	return
 }

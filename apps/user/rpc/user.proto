@@ -27,6 +27,7 @@ message LoginReq{
 }
 
 message LoginResp{
+  string id = 3;
   string Token = 1;
   int64 expire = 2;
 }

@@ -7,6 +7,10 @@ UserRpc:
       - 118.178.120.11:3379
     Key: user.rpc
 
+Redisx:
+  Host: 118.178.120.11:16379
+  Pass: easy-chat
+
 JwtAuth:
   AccessSecret: easy-chat
   AccessExpire: 864000
