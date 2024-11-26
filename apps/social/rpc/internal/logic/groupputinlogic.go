@@ -53,7 +53,7 @@ func (l *GroupPutinLogic) GroupPutin(in *social.GroupPutinReq) (*social.GroupPut
 	var group models.Group
 	err := l.svcCtx.CSvc.DB.Where("id = ?", in.GroupId).Find(&group).Error
 	if err != nil {
-		if err != gorm.ErrRecordNotFound {
+		if !errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithStack(xerr.GroupNotFound)
 		}
 		return nil, errors.Wrapf(xerr.NewDBErr(), "get group %v failed err %v", in.GroupId, err)
@@ -87,16 +87,12 @@ func (l *GroupPutinLogic) GroupPutin(in *social.GroupPutinReq) (*social.GroupPut
 		return &social.GroupPutinResp{}, nil
 	}
 
-	if err != nil {
-		return nil, errors.Wrapf(xerr.NewDBErr(), "create group putin %v failed err %v", groupReq.ID, err)
-	}
-
 	// 检查是否是管理者邀请入群
 	if in.InviterUid != "" {
 		var groupMember models.GroupMember
 		err := l.svcCtx.CSvc.DB.Where("user_id = ?", in.InviterUid).Find(&groupMember).Error
 		if err != nil {
-			if err != gorm.ErrRecordNotFound {
+			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				return nil, errors.WithStack(xerr.GroupInviterNotFound)
 			}
 			return nil, errors.Wrapf(xerr.NewDBErr(), "get group %v failed err %v", in.GroupId, err)
@@ -137,5 +133,7 @@ func (l *GroupPutinLogic) GroupPutin(in *social.GroupPutinReq) (*social.GroupPut
 	if err != nil {
 		return nil, errors.Wrapf(xerr.NewDBErr(), "create group putin %v failed err %v", groupReq.ID, err)
 	}
-	return &social.GroupPutinResp{}, nil
+	return &social.GroupPutinResp{
+		GroupId: groupReq.GroupID,
+	}, nil
 }

@@ -9,6 +9,13 @@ const (
 type ChatType int
 
 const (
-	GroupChatType ChatType = iota
-	SingleChatType
+	SingleChatType ChatType = iota + 1
+	GroupChatType
+)
+
+type ContentType int
+
+const (
+	ContentChatMsg ContentType = iota + 1
+	ContentMarkRead
 )

@@ -1,0 +1,29 @@
+FROM alpine:latest
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
+    apk update && \
+    apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone \
+ENV TZ=Asia/Shanghai
+
+ARG SERVER_NAME=im
+ARG SERVER_TYPE=ws
+
+ENV RUN_BIN=/${SERVER_NAME}/bin/${SERVER_NAME}-${SERVER_TYPE}
+ENV RUN_CONF=/${SERVER_NAME}/conf/${SERVER_NAME}.yaml
+
+RUN mkdir /$SERVER_NAME && mkdir /$SERVER_NAME/bin && mkdir /$SERVER_NAME/conf
+
+COPY ./bin/$SERVER_NAME-$SERVER_TYPE /$SERVER_NAME/bin
+
+COPY ./apps/$SERVER_NAME/$SERVER_TYPE/etc/dev/${SERVER_NAME}.yaml /$SERVER_NAME/conf
+
+RUN chmod +x /$SERVER_NAME/bin/$SERVER_NAME-$SERVER_TYPE
+
+WORKDIR /$SERVER_NAME/bin
+
+#CMD ["/user/bin/user-rpc", "-f", "/user/conf/user.yaml"]
+CMD $RUN_BIN -f $RUN_CONF
+
+
+

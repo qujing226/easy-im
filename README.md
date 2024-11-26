@@ -60,9 +60,20 @@ nickname    Qwyk        peninsula   admin       xiaoming    xiaohong    xiaowang
 phone       17309710356 18239655309 17344995006 11122223333 22233334444 33344445555
 password    yining2024  yujie2024   admin       123456      123456      123456
 
+ID 
+admin  1843306294396588032
+xiaming 1843306302982328320
 
 ```
 
+#### 群测试
+``` 
+1843311241150337024   Go语言开发者(4)
+1843306294396588032     admin  (群主)
+1843306302982328320     xiaoming
+1843306311148638208     xiaohong
+1843306319776321536     xiaowang
+```
 #### 安装教程
 
 1.  sudo make user-rpc-dev

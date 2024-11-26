@@ -2,8 +2,10 @@ package group
 
 import (
 	"context"
+	"easy-chat/apps/im/rpc/imclient"
 	"easy-chat/apps/social/rpc/social"
 	"easy-chat/pkg/ctxdata"
+	"easy-chat/pkg/status"
 
 	"easy-chat/apps/social/api/internal/svc"
 	"easy-chat/apps/social/api/internal/types"
@@ -29,7 +31,7 @@ func NewGroupPutInLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GroupP
 func (l *GroupPutInLogic) GroupPutIn(req *types.GroupPutInRep) (resp *types.GroupPutInResp, err error) {
 	// todo: add your logic here and delete this line
 	uid := ctxdata.GetUId(l.ctx)
-	_, err = l.svcCtx.Social.GroupPutin(l.ctx, &social.GroupPutinReq{
+	res, err := l.svcCtx.Social.GroupPutin(l.ctx, &social.GroupPutinReq{
 		GroupId:    req.GroupId,
 		ReqId:      uid,
 		ReqMsg:     req.ReqMsg,
@@ -37,5 +39,17 @@ func (l *GroupPutInLogic) GroupPutIn(req *types.GroupPutInRep) (resp *types.Grou
 		JoinSource: int32(req.JoinSource),
 		InviterUid: req.IviterUid,
 	})
+	if err != nil{
+		return
+	}
+	if res.GroupId == ""{
+		return
+	}
+	_,err = l.svcCtx.SetUpUserConversation(l.ctx,&imclient.SetUpUserConversationReq{
+		SendId:   uid,
+		RecvId:   res.GroupId,
+		ChatType: int32(status.GroupChatType),
+	})
+
 	return
 }

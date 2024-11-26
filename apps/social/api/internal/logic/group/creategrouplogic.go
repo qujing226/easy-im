@@ -2,11 +2,11 @@ package group
 
 import (
 	"context"
-	"easy-chat/apps/social/rpc/social"
-	"easy-chat/pkg/ctxdata"
-
+	"easy-chat/apps/im/rpc/imclient"
 	"easy-chat/apps/social/api/internal/svc"
 	"easy-chat/apps/social/api/internal/types"
+	"easy-chat/apps/social/rpc/social"
+	"easy-chat/pkg/ctxdata"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -29,11 +29,22 @@ func NewCreateGroupLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Creat
 func (l *CreateGroupLogic) CreateGroup(req *types.GroupCreateReq) (resp *types.GroupCreateResp, err error) {
 	// todo: add your logic here and delete this line
 	uid := ctxdata.GetUId(l.ctx)
-	_, err = l.svcCtx.Social.GroupCreate(l.ctx, &social.GroupCreateReq{
+	res, err := l.svcCtx.Social.GroupCreate(l.ctx, &social.GroupCreateReq{
 		Name:       req.Name,
 		Icon:       req.Icon,
 		Status:     1,
 		CreatorUid: uid,
+	})
+	if err != nil{
+		return
+	}
+	if res.GroupId == ""{
+		return
+	}
+	// 建立会话
+	_,err = l.svcCtx.CreateGroupConversation(l.ctx,&imclient.CreateGroupConversationReq{
+		GroupId:  res.GroupId,
+		CreateId: uid,
 	})
 	return
 }

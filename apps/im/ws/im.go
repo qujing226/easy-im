@@ -13,6 +13,8 @@ import (
 
 var configFile = flag.String("f", "etc/dev/im.yaml", "the config file")
 
+//var configFile = flag.String("f", "apps/im/ws/etc/dev/im.yaml", "the config file")
+
 func main() {
 	flag.Parse()
 
@@ -26,7 +28,9 @@ func main() {
 	ctx := svc.NewServiceContext(c)
 	srv := websocket.NewServer(c.ListenOn,
 		websocket.WithAuthentication(handler.NewJwtAuth(ctx)),
-		websocket.WithServerMaxConnectionIdle(180123*time.Second),
+		//websocket.WithServerMaxConnectionIdle(180*time.Second),
+		websocket.WithServerMaxConnectionIdle(180*time.Minute),
+		websocket.WithServerAck(websocket.OnlyAck),
 	)
 	defer srv.Stop()
 

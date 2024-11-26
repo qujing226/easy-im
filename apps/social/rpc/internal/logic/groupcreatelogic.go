@@ -69,5 +69,7 @@ func (l *GroupCreateLogic) GroupCreate(in *social.GroupCreateReq) (*social.Group
 		return nil, errors.Wrapf(xerr.NewDBErr(), "commit tx failed err %v", err)
 	}
 
-	return &social.GroupCreateResp{}, nil
+	return &social.GroupCreateResp{
+		GroupId: group.ID,
+	}, nil
 }

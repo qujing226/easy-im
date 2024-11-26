@@ -7,12 +7,16 @@ SocialRpc:
     Hosts:
       - 118.178.120.11:3379
     Key: social.rpc
-
 UserRpc:
   Etcd:
     Hosts:
       - 118.178.120.11:3379
     Key: user.rpc
+ImRpc:
+  Etcd:
+    Hosts:
+      - 118.178.120.11:3379
+    Key: im.rpc
 
 
 JwtAuth:

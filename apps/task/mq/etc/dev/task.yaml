@@ -1,6 +1,12 @@
 Name: task.mq
 ListenOn: 0.0.0.0:10091
 
+SocialRpc:
+  Etcd:
+    Hosts:
+      - 118.178.120.11:3379
+    Key: social.rpc
+
 MsgChatTransfer:
   Name: MsgChatTransfer
   Brokers:
@@ -10,9 +16,23 @@ MsgChatTransfer:
   Offset: first
   Consumers: 1
 
+MsgReadTransfer:
+  Name: MsgReadTransfer
+  Brokers:
+    - 118.178.120.11:9092
+  Group: kafka
+  Topic: MsgReadTransfer
+  Offset: first
+  Consumers: 1
+
+MsgReadHandler:
+  GroupMsgReadHandler: 1
+  GroupMsgReadRecordDelayTime: 60
+  GroupMsgReadRecordDelayCount: 2
+
 Mongo:
   Url: "mongodb://root:easy-chat@118.178.120.11:47017"
-  Db: east-chat
+  Db: easy-chat
 
 Redisx:
   Host: 118.178.120.11:16379
@@ -20,4 +40,4 @@ Redisx:
   Pass: easy-chat
 
 Ws:
-  Host: 127.0.0.1:10090
+  Host: 118.178.120.11:10090

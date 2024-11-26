@@ -5,9 +5,14 @@ JwtAuth:
   AccessSecret:  easy-chat
 Mongo:
   Url: "mongodb://root:easy-chat@118.178.120.11:47017"
-  Db: east-chat
+  Db: easy-chat
 
 MsgChatTransfer:
   Topic: MsgChatTransfer
+  Addrs:
+    - 118.178.120.11:9092
+
+MsgReadTransfer:
+  Topic: MsgReadTransfer
   Addrs:
     - 118.178.120.11:9092

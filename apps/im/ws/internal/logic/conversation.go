@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/im/immodels"
+	"easy-chat/apps/im/model"
 	"easy-chat/apps/im/ws/internal/svc"
 	"easy-chat/apps/im/ws/websocket"
 	"easy-chat/apps/im/ws/ws"
