@@ -97,7 +97,7 @@ services:
     depends_on:
       - etcd
     volumes:
-      - ./components/apisix-dashboard/config.yaml:/usr/local/apisix-dashboard/conf.yaml
+      - ./components/apisix-dashboard/conf.yaml:/usr/local/apisix-dashboard/conf.yaml
     ports:
       - "9000:9000"
     networks:
