@@ -14,4 +14,4 @@ fi
 # 拉取最新的镜像
 docker pull ${reso_addr}:${tag}
 # 运行新的容器
-docker run -d --name ${container_name} --network go-im_easy-chat  ${reso_addr}:${tag}
+docker run -d --name ${container_name} --network go-im_easy-chat  -p 10091:10091 ${reso_addr}:${tag}

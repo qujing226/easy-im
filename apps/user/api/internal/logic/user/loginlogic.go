@@ -2,13 +2,11 @@ package user
 
 import (
 	"context"
+	"easy-chat/apps/user/api/internal/svc"
+	"easy-chat/apps/user/api/internal/types"
 	"easy-chat/apps/user/rpc/user"
 	"easy-chat/pkg/status"
 	"github.com/jinzhu/copier"
-
-	"easy-chat/apps/user/api/internal/svc"
-	"easy-chat/apps/user/api/internal/types"
-
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -45,6 +43,13 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 
 	// 处理登入的业务
 	err = l.svcCtx.Redis.HsetCtx(l.ctx, status.REDIS_ONLINE_USER, loginResp.Id, "1")
+
+	// 为每个用户的在线状态单独设置过期时间
+	//expireKey := fmt.Sprintf("%s:%s", status.REDIS_ONLINE_USER, loginResp.Id)
+	//expireErr := l.svcCtx.Redis.ExpireCtx(l.ctx, expireKey, 30*60)
+	//if expireErr != nil {
+	//	return nil, expireErr
+	//}
 
 	return
 }
