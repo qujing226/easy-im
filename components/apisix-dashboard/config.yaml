@@ -1,0 +1,21 @@
+conf:
+  listen:
+    host: 0.0.0.0
+    port: 9000
+  allow_list:
+    - 0.0.0.0/0
+  etcd:
+    endpoints:
+      - "http://118.178.120.11:3379"
+    mtls:
+      key_file: ""
+      cert_file: ""
+      ca_file: ""
+  log:
+    error_log:
+      level: warn
+      file_path:
+        logs/error.log
+    access_log:
+      file_path:
+        logs/access.log
