@@ -1,0 +1,24 @@
+apisix:
+  node_listen: 9080
+  enable_ipv6: false
+  enable_control: true
+  control:
+    ip: "0.0.0.0"
+    port: 7092
+
+deployment:
+  admin:
+    allow_admin:
+      - 0.0.0.0/0
+    admin_key:
+      - name: "admin"
+        key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+        role: admin
+      - name : "viewer"
+        key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+        role: viewer
+  etcd:
+    hosts:
+      - "http://etcd:3379"
+    prefix: "/apisix"
+    timeout: 30
