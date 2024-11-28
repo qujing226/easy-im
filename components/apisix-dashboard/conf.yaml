@@ -6,7 +6,7 @@ conf:
     - 0.0.0.0/0
   etcd:
     endpoints:
-      - http://118.178.120.11:3379
+      - "http://118.178.120.11:3379"
     mtls:
       key_file: ""
       cert_file: ""
