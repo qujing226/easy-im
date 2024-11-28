@@ -19,6 +19,7 @@ deployment:
         role: viewer
   etcd:
     hosts:
+      - http://118.178.120.11:3379
       - "http://118.178.120.11:3379"
     prefix: "/apisix"
     timeout: 30
