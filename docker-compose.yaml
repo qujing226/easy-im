@@ -111,9 +111,10 @@ services:
       - etcd
       - apisix-dashboard
     volumes:
-#      - ./components/apisix/config.yaml:/usr/local/apisix/conf/config.yaml
-      - ./components/apisix/conf:/usr/local/apisix/conf
+      - ./components/apisix/config.yaml:/usr/local/apisix/conf/config.yaml
       - ./components/apisix/logs:/usr/local/apisix/logs
+      - ./components/apisix/cert/ssl_PLACE_HOLDER.crt:/usr/local/apisix/conf/cert/ssl_PLACE_HOLDER.crt
+      - ./components/apisix/cert/ssl_PLACE_HOLDER.key:/usr/local/apisix/conf/cert/ssl_PLACE_HOLDER.key
     ports:
       - "9180:9180/tcp"
       - "9080:9080/tcp"
@@ -122,6 +123,7 @@ services:
       - "9093:9092/tcp"
     networks:
       easy-chat:
+
 
 networks:
   easy-chat:
