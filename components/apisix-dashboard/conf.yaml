@@ -59,9 +59,9 @@ authentication:
   expire_time: 3600     # jwt token expire time, in second
   users:                # yamllint enable rule:comments-indentation
     - username: admin   # username and password for login `manager api`
-      password: admin
+      password: yujie2018
     - username: user
-      password: user
+      password: yui123679125i5p3190
 
 plugins:                          # plugin list (sorted in alphabetical order)
   - api-breaker
