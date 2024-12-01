@@ -11,7 +11,7 @@ maxIdleConn = 30
 maxOpenConn = 60
 addr = "118.178.120.11:13306"
 name = "sail"
-pass = "easy-im"
+pass = "easy-chat"
 user = "root"
 
 [etcd]
