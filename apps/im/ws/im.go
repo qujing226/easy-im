@@ -5,9 +5,9 @@ import (
 	"easy-chat/apps/im/ws/internal/handler"
 	"easy-chat/apps/im/ws/internal/svc"
 	"easy-chat/apps/im/ws/websocket"
+	"easy-chat/pkg/configserver"
 	"flag"
 	"fmt"
-	"github.com/zeromicro/go-zero/core/conf"
 	"time"
 )
 
@@ -19,7 +19,18 @@ func main() {
 	flag.Parse()
 
 	var c config.Config
-	conf.MustLoad(*configFile, &c)
+	//conf.MustLoad(*configFile, &c)
+	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
+		ETCDEndpoints:  "118.178.120.11:3379",
+		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
+		Namespace:      "im",
+		Configs:        "im-ws.yaml",
+		ConfigFilePath: "./etc/conf",
+		LogLevel:       "DEBUG",
+	})).MustLoad(&c)
+	if err != nil {
+		panic(err)
+	}
 
 	if err := c.SetUp(); err != nil {
 		panic(err)

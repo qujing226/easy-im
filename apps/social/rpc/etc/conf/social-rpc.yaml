@@ -1,0 +1,16 @@
+cache:
+    - host: 118.178.120.11:16379
+      pass: easy-chat
+      type: node
+etcd:
+    hosts:
+        - 118.178.120.11:3379
+    key: social.rpc
+jwt:
+    accessexpire: 864000
+    accesssecret: easy-chat
+listenon: 0.0.0.0:10001
+mode: test
+mysql:
+    datasource: root:easy-chat@tcp(118.178.120.11:13306)/easy_chat?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+name: social.rpc

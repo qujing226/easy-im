@@ -1,0 +1,21 @@
+host: 0.0.0.0
+imrpc:
+    etcd:
+        hosts:
+            - 118.178.120.11:3379
+        key: im.rpc
+jwtauth:
+    accessexpire: 864000
+    accesssecret: easy-chat
+name: im
+port: 8882
+socialrpc:
+    etcd:
+        hosts:
+            - 118.178.120.11:3379
+        key: social.rpc
+userrpc:
+    etcd:
+        hosts:
+            - 118.178.120.11:3379
+        key: user.rpc

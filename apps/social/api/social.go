@@ -4,10 +4,10 @@ import (
 	"easy-chat/apps/social/api/internal/config"
 	"easy-chat/apps/social/api/internal/handler"
 	"easy-chat/apps/social/api/internal/svc"
+	"easy-chat/pkg/configserver"
 	"easy-chat/pkg/resultx"
 	"flag"
 	"fmt"
-	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
@@ -18,7 +18,18 @@ func main() {
 	flag.Parse()
 
 	var c config.Config
-	conf.MustLoad(*configFile, &c)
+	//conf.MustLoad(*configFile, &c)
+	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
+		ETCDEndpoints:  "118.178.120.11:3379",
+		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
+		Namespace:      "social",
+		Configs:        "social-api.yaml",
+		ConfigFilePath: "./etc/conf",
+		LogLevel:       "DEBUG",
+	})).MustLoad(&c)
+	if err != nil {
+		panic(err)
+	}
 
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()

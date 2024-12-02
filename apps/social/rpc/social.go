@@ -4,13 +4,13 @@ import (
 	"easy-chat/apps/social/rpc/internal/config"
 	"easy-chat/apps/social/rpc/internal/server"
 	"easy-chat/apps/social/rpc/internal/svc"
+	"easy-chat/pkg/configserver"
 	"easy-chat/pkg/interceptot/rpcserver"
 	"flag"
 	"fmt"
 
 	"easy-chat/apps/social/rpc/social"
 
-	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
@@ -23,7 +23,18 @@ func main() {
 	flag.Parse()
 
 	var c config.Config
-	conf.MustLoad(*configFile, &c)
+	//conf.MustLoad(*configFile, &c)
+	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
+		ETCDEndpoints:  "118.178.120.11:3379",
+		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
+		Namespace:      "social",
+		Configs:        "social-rpc.yaml",
+		ConfigFilePath: "./etc/conf",
+		LogLevel:       "DEBUG",
+	})).MustLoad(&c)
+	if err != nil {
+		panic(err)
+	}
 	ctx := svc.NewServiceContext(c)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {

@@ -1,0 +1,10 @@
+etcd:
+    hosts:
+        - 118.178.120.11:3379
+    key: im.rpc
+listenon: 0.0.0.0:10002
+mode: test
+mongo:
+    db: easy-chat
+    url: mongodb://root:easy-chat@118.178.120.11:47017
+name: im.rpc
