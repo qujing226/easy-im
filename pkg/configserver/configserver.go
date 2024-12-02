@@ -5,7 +5,7 @@ import (
 	"github.com/zeromicro/go-zero/core/conf"
 )
 
-var ErrNotSetConfig = errors.New("未设置信息")
+var ErrNotSetConfig = errors.New("none config info...")
 
 type ConfigServer interface {
 	FromJsonBytes() ([]byte, error)
@@ -25,9 +25,9 @@ func NewConfigServer(configFile string, s ConfigServer) *configSever {
 }
 
 func (s *configSever) MustLoad(v any) error {
-	if s.ConfigServer.Error() != nil {
-		return s.ConfigServer.Error()
-	}
+	//if s.ConfigServer.Error() != nil {
+	//	return s.ConfigServer.Error()
+	//}
 	if s.configFile == "" && s.ConfigServer == nil {
 		return ErrNotSetConfig
 	}
