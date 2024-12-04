@@ -20,7 +20,7 @@ ImRpc:
 
 
 Redisx:
-  Hosts: 118.178.120.11:16379
+  Host: 118.178.120.11:16379
   Pass: easy-chat
 
 JwtAuth:

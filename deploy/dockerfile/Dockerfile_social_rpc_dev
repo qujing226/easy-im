@@ -13,7 +13,7 @@ ENV RUN_BIN=/${SERVER_NAME}/bin/${SERVER_NAME}-${SERVER_TYPE}
 ENV RUN_CONF=/${SERVER_NAME}/conf/${SERVER_NAME}.yaml
 
 # etc/conf 放置动态拉取的配置文件
-RUN mkdir /$SERVER_NAME && mkdir /$SERVER_NAME/bin && mkdir /$SERVER_NAME/conf && mkdir /$SERVER_NAME/etc/conf
+RUN mkdir /$SERVER_NAME && mkdir /$SERVER_NAME/bin && mkdir /$SERVER_NAME/conf && mkdir -p /$SERVER_NAME/etc/conf
 
 COPY ./bin/$SERVER_NAME-$SERVER_TYPE /$SERVER_NAME/bin
 

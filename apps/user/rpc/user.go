@@ -31,8 +31,10 @@ func main() {
 		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
 		Namespace:      "user",
 		Configs:        configs,
-		ConfigFilePath: "./etc/conf",
-		LogLevel:       "DEBUG",
+		ConfigFilePath: "../etc/conf",
+		// 本地测试使用以下配置
+		//ConfigFilePath: "./etc/conf",
+		LogLevel: "DEBUG",
 	})).MustLoad(&c, func(bytes []byte) error {
 		var c config.Config
 		err := configserver.LoadFromJsonBytes(bytes, &c)
