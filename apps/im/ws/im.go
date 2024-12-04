@@ -19,15 +19,24 @@ func main() {
 	flag.Parse()
 
 	var c config.Config
-	//conf.MustLoad(*configFile, &c)
+	var configs = "im-ws.yaml"
 	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
 		ETCDEndpoints:  "118.178.120.11:3379",
 		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
 		Namespace:      "im",
-		Configs:        "im-ws.yaml",
+		Configs:        configs,
 		ConfigFilePath: "./etc/conf",
 		LogLevel:       "DEBUG",
-	})).MustLoad(&c)
+	})).MustLoad(&c, func(bytes []byte) error {
+		var c config.Config
+		err := configserver.LoadFromJsonBytes(bytes, &c)
+		if err != nil {
+			fmt.Println("config read err :", err)
+			return nil
+		}
+		fmt.Printf(configs, "config has changed :%+v \n", c)
+		return nil
+	})
 	if err != nil {
 		panic(err)
 	}

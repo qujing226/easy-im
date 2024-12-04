@@ -7,9 +7,12 @@ import (
 
 var ErrNotSetConfig = errors.New("none config info...")
 
+type OnChange func([]byte) error
+
 type ConfigServer interface {
+	Build() error
+	SetOnChange(OnChange)
 	FromJsonBytes() ([]byte, error)
-	Error() error
 }
 
 type configSever struct {
@@ -24,10 +27,7 @@ func NewConfigServer(configFile string, s ConfigServer) *configSever {
 	}
 }
 
-func (s *configSever) MustLoad(v any) error {
-	//if s.ConfigServer.Error() != nil {
-	//	return s.ConfigServer.Error()
-	//}
+func (s *configSever) MustLoad(v any, onChange OnChange) error {
 	if s.configFile == "" && s.ConfigServer == nil {
 		return ErrNotSetConfig
 	}
@@ -36,13 +36,23 @@ func (s *configSever) MustLoad(v any) error {
 		conf.MustLoad(s.configFile, v)
 		return nil
 	}
+	// 判断是否配置动态加载
+	if onChange != nil {
+		s.SetOnChange(onChange)
+	}
+	// 构建配置服务
+	if err := s.ConfigServer.Build(); err != nil {
+		return err
+	}
+
 	data, err := s.ConfigServer.FromJsonBytes()
 	if err != nil {
 		return err
 	}
-	return conf.LoadFromJsonBytes(data, v)
+
+	return LoadFromJsonBytes(data, v)
 }
 
-func (s *configSever) Error() error {
-	return s.ConfigServer.Error()
+func LoadFromJsonBytes(data []byte, v any) error {
+	return conf.LoadFromJsonBytes(data, v)
 }

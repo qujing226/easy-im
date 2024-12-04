@@ -46,7 +46,14 @@ type Conn struct {
 }
 
 func NewConn(s *Server, w http.ResponseWriter, r *http.Request) *Conn {
-	c, err := s.upGrader.Upgrade(w, r, nil)
+	// 与前端进行交互时，需要确服务端能够接收子协议
+	var responseHeader http.Header
+	if protocol := r.Header.Get("Sec-WebSocket-Protocol"); protocol != "" {
+		responseHeader = http.Header{
+			"Sec-WebSocket-Protocol": []string{protocol},
+		}
+	}
+	c, err := s.upGrader.Upgrade(w, r, responseHeader)
 	if err != nil {
 		s.Error("upgrade err ", err)
 		return nil

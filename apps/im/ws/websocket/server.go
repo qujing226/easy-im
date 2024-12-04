@@ -43,7 +43,11 @@ func NewServer(addr string, opts ...ServerOption) *Server {
 		connToUser: make(map[*Conn]string),
 		userToConn: make(map[string]*Conn),
 
-		upGrader:   websocket.Upgrader{},
+		upGrader: websocket.Upgrader{
+			CheckOrigin: func(r *http.Request) bool {
+				return true
+			},
+		},
 		Logger:     logx.WithContext(context.Background()),
 		TaskRunner: threading.NewTaskRunner(opt.concurrency),
 	}

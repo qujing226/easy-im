@@ -1,0 +1,14 @@
+host: 0.0.0.0
+jwtauth:
+    accessexpire: 864000
+    accesssecret: easy-chat
+name: user
+port: 8880
+redisx:
+    host: 118.178.120.11:16379
+    pass: easy-chat
+userrpc:
+    etcd:
+        hosts:
+            - 118.178.120.11:3379
+        key: user.rpc
