@@ -2,12 +2,12 @@ package handler
 
 import (
 	"context"
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/pkg/ctxdata"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/rest/token"
 	"net/http"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
 )
 
 type JwtAuth struct {

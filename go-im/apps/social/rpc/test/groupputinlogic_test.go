@@ -2,8 +2,8 @@ package test
 
 import (
 	"context"
-	"easy-chat/apps/social/rpc/internal/logic"
-	"easy-chat/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/logic"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
 	"fmt"
 	"testing"
 	"time"

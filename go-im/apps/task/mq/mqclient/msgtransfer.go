@@ -2,7 +2,7 @@ package mqclient
 
 import (
 	"context"
-	"easy-chat/apps/task/mq/mq"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/mq"
 	"encoding/json"
 	"github.com/zeromicro/go-queue/kq"
 )

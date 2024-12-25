@@ -1,7 +1,7 @@
 package immodels
 
 import (
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"

@@ -3,9 +3,9 @@ package user
 import (
 	"net/http"
 
-	"easy-chat/apps/user/api/internal/logic/user"
-	"easy-chat/apps/user/api/internal/svc"
-	"easy-chat/apps/user/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/logic/user"
+	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 

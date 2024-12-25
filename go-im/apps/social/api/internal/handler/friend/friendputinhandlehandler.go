@@ -3,9 +3,9 @@ package friend
 import (
 	"net/http"
 
-	"easy-chat/apps/social/api/internal/logic/friend"
-	"easy-chat/apps/social/api/internal/svc"
-	"easy-chat/apps/social/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/logic/friend"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 

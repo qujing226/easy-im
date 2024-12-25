@@ -1,14 +1,14 @@
 package svc
 
 import (
-	"easy-chat/apps/im/api/internal/config"
-	"easy-chat/apps/im/rpc/im"
-	"easy-chat/apps/im/rpc/imclient"
-	"easy-chat/apps/social/rpc/social"
-	"easy-chat/apps/social/rpc/socialclient"
-	"easy-chat/apps/user/rpc/user"
-	"easy-chat/apps/user/rpc/userclient"
 	"github.com/zeromicro/go-zero/zrpc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/im"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/imclient"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/socialclient"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/userclient"
 )
 
 type ServiceContext struct {

@@ -2,12 +2,12 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/im/rpc/imclient"
-	"easy-chat/pkg/ctxdata"
 	"github.com/jinzhu/copier"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/imclient"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
 
-	"easy-chat/apps/im/api/internal/svc"
-	"easy-chat/apps/im/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

@@ -2,8 +2,8 @@ package svc
 
 import (
 	"context"
-	"easy-chat/apps/social/rpc/internal/config"
-	"easy-chat/pkg/utils"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/pkg/utils"
 	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 	"time"

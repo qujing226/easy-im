@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"easy-chat/apps/im/ws/internal/handler/conversation"
-	"easy-chat/apps/im/ws/internal/handler/push"
-	"easy-chat/apps/im/ws/internal/handler/user"
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/handler/conversation"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/handler/push"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/handler/user"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
 )
 
 func RegisterHandlers(srv *websocket.Server, svc *svc.ServiceContext) {

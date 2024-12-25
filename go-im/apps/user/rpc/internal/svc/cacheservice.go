@@ -2,9 +2,9 @@ package svc
 
 import (
 	"context"
-	"easy-chat/apps/user/rpc/internal/config"
-	"easy-chat/apps/user/rpc/models"
-	"easy-chat/pkg/utils"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/models"
+	"github.com/peninsula12/easy-im/go-im/pkg/utils"
 	"encoding/json"
 	"fmt"
 	"github.com/redis/go-redis/v9"

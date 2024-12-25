@@ -1,13 +1,13 @@
 package main
 
 import (
-	"easy-chat/apps/im/ws/internal/config"
-	"easy-chat/apps/im/ws/internal/handler"
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/apps/im/ws/websocket"
-	"easy-chat/pkg/configserver"
 	"flag"
 	"fmt"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/handler"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
 	"time"
 )
 

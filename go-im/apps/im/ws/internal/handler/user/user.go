@@ -1,8 +1,8 @@
 package user
 
 import (
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
 )
 
 func OnLine(srv *svc.ServiceContext) websocket.HandlerFunc {

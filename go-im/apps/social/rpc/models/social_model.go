@@ -1,7 +1,7 @@
 package models
 
 import (
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 	"time"
 )
 

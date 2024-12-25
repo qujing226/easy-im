@@ -1,15 +1,15 @@
 package main
 
 import (
-	"easy-chat/pkg/configserver"
-	"easy-chat/pkg/interceptor/rpcserver"
 	"flag"
 	"fmt"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor/rpcserver"
 
-	"easy-chat/apps/im/rpc/im"
-	"easy-chat/apps/im/rpc/internal/config"
-	"easy-chat/apps/im/rpc/internal/server"
-	"easy-chat/apps/im/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/im"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/internal/server"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/service"
 	"github.com/zeromicro/go-zero/zrpc"

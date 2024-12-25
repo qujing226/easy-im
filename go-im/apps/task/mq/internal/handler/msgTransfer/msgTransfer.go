@@ -2,11 +2,11 @@ package msgTransfer
 
 import (
 	"context"
-	"easy-chat/apps/im/ws/websocket"
-	"easy-chat/apps/im/ws/ws"
-	"easy-chat/apps/social/rpc/socialclient"
-	"easy-chat/apps/task/mq/internal/svc"
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/ws"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/socialclient"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

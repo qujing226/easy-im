@@ -2,11 +2,11 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/im/model"
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/apps/im/ws/websocket"
-	"easy-chat/apps/im/ws/ws"
-	"easy-chat/pkg/suid"
+	"github.com/peninsula12/easy-im/go-im/apps/im/model"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/ws"
+	"github.com/peninsula12/easy-im/go-im/pkg/suid"
 	"time"
 )
 

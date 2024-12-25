@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/rpc/internal/svc"
-	"easy-chat/apps/user/rpc/models"
-	"easy-chat/apps/user/rpc/user"
-	"easy-chat/pkg/xerr"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/models"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/pkg/xerr"
 	"fmt"
 	"github.com/pkg/errors"
 

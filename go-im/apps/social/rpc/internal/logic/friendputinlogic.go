@@ -2,17 +2,17 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/social/rpc/internal/svc"
-	"easy-chat/apps/social/rpc/models"
-	"easy-chat/pkg/status"
-	"easy-chat/pkg/suid"
-	"easy-chat/pkg/xerr"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/models"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/pkg/suid"
+	"github.com/peninsula12/easy-im/go-im/pkg/xerr"
 	"fmt"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 	"time"
 
-	"easy-chat/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

@@ -2,12 +2,12 @@ package user
 
 import (
 	"context"
-	"easy-chat/apps/user/rpc/user"
-	"easy-chat/pkg/ctxdata"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
 	"github.com/jinzhu/copier"
 
-	"easy-chat/apps/user/api/internal/svc"
-	"easy-chat/apps/user/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

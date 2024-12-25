@@ -1,8 +1,8 @@
 package msgTransfer
 
 import (
-	"easy-chat/apps/im/ws/ws"
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/ws"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 	"github.com/zeromicro/go-zero/core/logx"
 	"sync"
 	"time"

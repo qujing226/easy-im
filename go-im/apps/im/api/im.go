@@ -1,15 +1,15 @@
 package main
 
 import (
-	"easy-chat/pkg/configserver"
-	"easy-chat/pkg/resultx"
 	"flag"
 	"fmt"
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/pkg/resultx"
 
-	"easy-chat/apps/im/api/internal/config"
-	"easy-chat/apps/im/api/internal/handler"
-	"easy-chat/apps/im/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/handler"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

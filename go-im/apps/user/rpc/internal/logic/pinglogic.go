@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"easy-chat/apps/user/rpc/internal/svc"
-	"easy-chat/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

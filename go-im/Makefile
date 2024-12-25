@@ -1,8 +1,8 @@
 user-rpc-dev:
-	@make -f go-im/deploy/mk/user-rpc.mk release-test
+	@make -f deploy/mk/user-rpc.mk release-test
 
 user-api-dev:
-	@make -f go-im/deploy/mk/user-api.mk release-test
+	@make -f deploy/mk/user-api.mk release-test
 
 social-rpc-dev:
 	@make -f deploy/mk/social-rpc.mk release-test

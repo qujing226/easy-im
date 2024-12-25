@@ -1,9 +1,9 @@
 package svc
 
 import (
-	"easy-chat/apps/user/rpc/internal/config"
-	"easy-chat/pkg/ctxdata"
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 	"github.com/zeromicro/go-zero/core/stores/redis"
 	"time"
 )

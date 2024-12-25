@@ -2,8 +2,8 @@ package interceptor
 
 import (
 	"context"
-	"easy-chat/pkg/suid"
-	"easy-chat/pkg/xerr"
+	"github.com/peninsula12/easy-im/go-im/pkg/suid"
+	"github.com/peninsula12/easy-im/go-im/pkg/xerr"
 	"fmt"
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/collection"

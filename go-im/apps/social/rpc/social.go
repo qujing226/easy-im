@@ -1,16 +1,16 @@
 package main
 
 import (
-	"easy-chat/apps/social/rpc/internal/config"
-	"easy-chat/apps/social/rpc/internal/server"
-	"easy-chat/apps/social/rpc/internal/svc"
-	"easy-chat/pkg/configserver"
-	"easy-chat/pkg/interceptor"
-	"easy-chat/pkg/interceptor/rpcserver"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/server"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor/rpcserver"
 	"flag"
 	"fmt"
 
-	"easy-chat/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
 
 	"github.com/zeromicro/go-zero/core/service"
 	"github.com/zeromicro/go-zero/zrpc"

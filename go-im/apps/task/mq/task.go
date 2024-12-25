@@ -1,10 +1,10 @@
 package main
 
 import (
-	"easy-chat/apps/task/mq/internal/config"
-	"easy-chat/apps/task/mq/internal/handler"
-	"easy-chat/apps/task/mq/internal/svc"
-	"easy-chat/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/handler"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
 	"flag"
 	"fmt"
 	"github.com/zeromicro/go-zero/core/service"

@@ -6,7 +6,7 @@ package handler
 import (
 	"net/http"
 
-	"easy-chat/apps/im/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

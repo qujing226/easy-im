@@ -1,9 +1,9 @@
 package svc
 
 import (
-	"easy-chat/apps/im/model"
-	"easy-chat/apps/im/ws/internal/config"
-	"easy-chat/apps/task/mq/mqclient"
+	"github.com/peninsula12/easy-im/go-im/apps/im/model"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/mqclient"
 )
 
 type ServiceContext struct {

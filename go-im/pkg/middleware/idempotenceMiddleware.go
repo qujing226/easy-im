@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"easy-chat/pkg/interceptor"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor"
 	"net/http"
 )
 

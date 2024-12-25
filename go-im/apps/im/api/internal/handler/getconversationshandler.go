@@ -3,10 +3,10 @@ package handler
 import (
 	"net/http"
 
-	"easy-chat/apps/im/api/internal/logic"
-	"easy-chat/apps/im/api/internal/svc"
-	"easy-chat/apps/im/api/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/logic"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/types"
 )
 
 // 获取会话

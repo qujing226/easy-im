@@ -2,14 +2,14 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/im/rpc/im"
-	"easy-chat/apps/social/rpc/socialclient"
-	"easy-chat/apps/user/rpc/user"
-	"easy-chat/pkg/bitmap"
-	"easy-chat/pkg/status"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/im"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/socialclient"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/pkg/bitmap"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 
-	"easy-chat/apps/im/api/internal/svc"
-	"easy-chat/apps/im/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/api/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

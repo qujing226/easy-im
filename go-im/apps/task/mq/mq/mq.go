@@ -1,6 +1,6 @@
 package mq
 
-import "easy-chat/pkg/status"
+import "github.com/peninsula12/easy-im/go-im/pkg/status"
 
 type MsgChatTransfer struct {
 	MsgId string `mapstructure:"msgId"`

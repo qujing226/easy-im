@@ -1,12 +1,12 @@
 package svc
 
 import (
-	"easy-chat/apps/im/rpc/imclient"
-	"easy-chat/apps/social/api/internal/config"
-	"easy-chat/apps/social/rpc/socialclient"
-	"easy-chat/apps/user/rpc/userclient"
-	"easy-chat/pkg/interceptor"
-	"easy-chat/pkg/middleware"
+	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/imclient"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/socialclient"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/userclient"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor"
+	"github.com/peninsula12/easy-im/go-im/pkg/middleware"
 	"github.com/zeromicro/go-zero/core/stores/redis"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/zrpc"

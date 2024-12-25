@@ -7,9 +7,9 @@ package server
 import (
 	"context"
 
-	"easy-chat/apps/user/rpc/internal/logic"
-	"easy-chat/apps/user/rpc/internal/svc"
-	"easy-chat/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/logic"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
 )
 
 type UserServer struct {

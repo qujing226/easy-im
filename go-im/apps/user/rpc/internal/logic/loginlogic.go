@@ -2,15 +2,15 @@ package logic
 
 import (
 	"context"
-	"easy-chat/apps/user/rpc/models"
-	"easy-chat/pkg/ctxdata"
-	"easy-chat/pkg/encrypy"
-	"easy-chat/pkg/xerr"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/models"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
+	"github.com/peninsula12/easy-im/go-im/pkg/encrypy"
+	"github.com/peninsula12/easy-im/go-im/pkg/xerr"
 	"github.com/pkg/errors"
 	"time"
 
-	"easy-chat/apps/user/rpc/internal/svc"
-	"easy-chat/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

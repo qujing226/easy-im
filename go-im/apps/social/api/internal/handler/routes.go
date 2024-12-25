@@ -6,9 +6,9 @@ package handler
 import (
 	"net/http"
 
-	friend "easy-chat/apps/social/api/internal/handler/friend"
-	group "easy-chat/apps/social/api/internal/handler/group"
-	"easy-chat/apps/social/api/internal/svc"
+	friend "github.com/peninsula12/easy-im/go-im/apps/social/api/internal/handler/friend"
+	group "github.com/peninsula12/easy-im/go-im/apps/social/api/internal/handler/group"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

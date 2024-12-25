@@ -1,11 +1,11 @@
 package push
 
 import (
-	"easy-chat/apps/im/ws/internal/svc"
-	"easy-chat/apps/im/ws/websocket"
-	"easy-chat/apps/im/ws/ws"
-	"easy-chat/pkg/status"
 	"github.com/mitchellh/mapstructure"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/websocket"
+	"github.com/peninsula12/easy-im/go-im/apps/im/ws/ws"
+	"github.com/peninsula12/easy-im/go-im/pkg/status"
 )
 
 func Push(svc *svc.ServiceContext) websocket.HandlerFunc {

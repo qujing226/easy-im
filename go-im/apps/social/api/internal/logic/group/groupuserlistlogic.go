@@ -2,11 +2,11 @@ package group
 
 import (
 	"context"
-	"easy-chat/apps/social/api/internal/svc"
-	"easy-chat/apps/social/api/internal/types"
-	"easy-chat/apps/social/rpc/social"
-	"easy-chat/apps/user/rpc/user"
-	"easy-chat/pkg/ctxdata"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/social/api/internal/types"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
+	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

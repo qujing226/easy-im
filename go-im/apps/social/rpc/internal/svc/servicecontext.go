@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"easy-chat/apps/social/rpc/internal/config"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/config"
 )
 
 type ServiceContext struct {

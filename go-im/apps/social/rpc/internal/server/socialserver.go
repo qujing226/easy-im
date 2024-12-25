@@ -7,9 +7,9 @@ package server
 import (
 	"context"
 
-	"easy-chat/apps/social/rpc/internal/logic"
-	"easy-chat/apps/social/rpc/internal/svc"
-	"easy-chat/apps/social/rpc/social"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/logic"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/svc"
+	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
 )
 
 type SocialServer struct {
