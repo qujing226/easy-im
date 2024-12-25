@@ -1,0 +1,121 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 0,
+	"data": [{
+		"id": 2,
+		"group_id": 1,
+		"user_id": 2,
+		"role": 1,
+		"invite_id": 0,
+		"create_time": "2023-07-30 10:45:00",
+		"unread": 0,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 2,
+			"displayName": "小闵",
+			"account": "13800000002",
+			"name_py": "xiaomin",
+			"avatar": "/static/img/avatar/62.jpg"
+		}
+	}, {
+		"id": 1,
+		"group_id": 1,
+		"user_id": 1,
+		"role": 3,
+		"invite_id": 2,
+		"create_time": "2023-07-30 10:45:00",
+		"unread": 3,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 1,
+			"displayName": "小小",
+			"account": "13498201232",
+			"name_py": "xiaoxiao",
+			"avatar": "/static/img/avatar/17.jpg"
+		}
+	}, {
+		"id": 3,
+		"group_id": 1,
+		"user_id": 3,
+		"role": 3,
+		"invite_id": 2,
+		"create_time": "2023-07-30 10:45:00",
+		"unread": 3,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 3,
+			"displayName": "木兮",
+			"account": "13800000003",
+			"name_py": "muxi",
+			"avatar": "/static/img/avatar/2.jpg"
+		}
+	}, {
+		"id": 4,
+		"group_id": 1,
+		"user_id": 4,
+		"role": 3,
+		"invite_id": 2,
+		"create_time": "2023-07-30 10:45:00",
+		"unread": 0,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 4,
+			"displayName": "木兮2",
+			"account": "13800000004",
+			"name_py": "muxi2",
+			"avatar": "/static/img/avatar/3.jpg"
+		}
+	}, {
+		"id": 5,
+		"group_id": 1,
+		"user_id": 5,
+		"role": 3,
+		"invite_id": 2,
+		"create_time": "2023-07-30 10:45:00",
+		"unread": 3,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 5,
+			"displayName": "测试",
+			"account": "13800000005",
+			"name_py": "ceshi",
+			"avatar": "/static/img/avatar/19.jpg"
+		}
+	}, {
+		"id": 6,
+		"group_id": 1,
+		"user_id": 12,
+		"role": 3,
+		"invite_id": 2,
+		"create_time": "2023-07-31 21:43:36",
+		"unread": 1,
+		"is_notice": 1,
+		"is_top": 0,
+		"status": 1,
+		"delete_time": 0,
+		"userInfo": {
+			"id": 12,
+			"displayName": "山药2",
+			"account": "13800000012",
+			"name_py": "shaoyao2",
+			"avatar": "/static/img/avatar/76.jpg"
+		}
+	}],
+	"page": 1
+}

@@ -1,0 +1,34 @@
+{
+	"code": 0,
+	"msg": "登录成功！",
+	"count": 0,
+	"token": "c21dqeWV6mXUF97OF\/FM8qtlJ+J1NuBBOXCZ0kv0CZEvGBHyc9py4\/4",
+	"data": {
+		"sessionId": "e1f73b01ddd6b8183063a72e109ae057",
+		"authToken": "c21dqeWV6mXUF97OF\/FM8qtlJ+J1NuBBOXCZ0kv0CZEvGBHyc9py4\/4",
+		"token": "c21dqeWV6mXUF97OF\/FM8qtlJ+J1NuBBOXCZ0kv0CZEvGBHyc9py4\/4",
+		"user": {
+			"id": 2,
+			"account": "13800000002",
+			"realname": "小闵",
+			"password": "2cb4ecb7fd5295685e275edc7d44e02e",
+			"salt": "srww",
+			"avatar": "/static/img/avatar/62.jpg",
+			"email": "xiaomin@153.com",
+			"sex": 2,
+			"role": 0,
+			"motto": null,
+			"remark": "",
+			"name_py": "xiaomin",
+			"setting": null,
+			"create_time": "2019-04-15 23:24:25",
+			"update_time": "2019-05-16 23:16:26",
+			"login_count": 10,
+			"last_login_time": 1690724346,
+			"last_login_ip": "127.0.0.1",
+			"delete_time": 0,
+			"status": 1
+		}
+	},
+	"page": 1
+}
