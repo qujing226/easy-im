@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
-	"github.com/peninsula12/easy-im/go-im/pkg/interceptor/rpcserver"
 	"flag"
 	"fmt"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/pkg/interceptor/rpcserver"
 
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/config"
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/server"

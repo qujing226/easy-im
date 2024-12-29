@@ -2,8 +2,8 @@ package mqclient
 
 import (
 	"context"
-	"github.com/peninsula12/easy-im/go-im/apps/task/mq/mq"
 	"encoding/json"
+	"github.com/peninsula12/easy-im/go-im/apps/task/mq/mq"
 	"github.com/zeromicro/go-queue/kq"
 )
 

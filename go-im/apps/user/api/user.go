@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
-	"github.com/peninsula12/easy-im/go-im/pkg/resultx"
 	"flag"
 	"fmt"
+	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
+	"github.com/peninsula12/easy-im/go-im/pkg/resultx"
 	"github.com/zeromicro/go-zero/core/proc"
 	"github.com/zeromicro/go-zero/rest/httpx"
 	"sync"

@@ -2,9 +2,9 @@ package user
 
 import (
 	"context"
+	"github.com/jinzhu/copier"
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
 	"github.com/peninsula12/easy-im/go-im/pkg/ctxdata"
-	"github.com/jinzhu/copier"
 
 	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/svc"
 	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/types"

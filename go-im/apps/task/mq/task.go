@@ -1,12 +1,12 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/config"
 	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/handler"
 	"github.com/peninsula12/easy-im/go-im/apps/task/mq/internal/svc"
 	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
-	"flag"
-	"fmt"
 	"github.com/zeromicro/go-zero/core/service"
 )
 

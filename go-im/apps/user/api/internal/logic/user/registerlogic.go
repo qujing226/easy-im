@@ -4,9 +4,9 @@ import (
 	"context"
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/user"
 
+	"github.com/jinzhu/copier"
 	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/svc"
 	"github.com/peninsula12/easy-im/go-im/apps/user/api/internal/types"
-	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

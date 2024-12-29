@@ -3,9 +3,9 @@ package logic
 import (
 	"context"
 	"github.com/jinzhu/copier"
-	"github.com/pkg/errors"
 	"github.com/peninsula12/easy-im/go-im/apps/im/model"
 	"github.com/peninsula12/easy-im/go-im/pkg/xerr"
+	"github.com/pkg/errors"
 
 	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/im"
 	"github.com/peninsula12/easy-im/go-im/apps/im/rpc/internal/svc"
