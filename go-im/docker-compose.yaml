@@ -134,7 +134,7 @@ services:
       - "./components/sail/compose-cfg.toml:/app/cfg.toml"
     restart: always
     platform: linux/arm64
-  
+
   jeager:
     image: jaegertracing/all-in-one:latest
     container_name: jeager
