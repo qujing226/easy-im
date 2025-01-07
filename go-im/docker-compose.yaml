@@ -183,10 +183,6 @@ services:
     networks:
       easy-chat:
 
-
-
-
-
 networks:
   easy-chat:
     driver: bridge
