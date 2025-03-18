@@ -2,11 +2,11 @@ package svc
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/internal/config"
 	"github.com/peninsula12/easy-im/go-im/apps/user/rpc/models"
 	"github.com/peninsula12/easy-im/go-im/pkg/utils"
-	"encoding/json"
-	"fmt"
 	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 	"time"
