@@ -7,7 +7,7 @@ etcd:
         - 118.178.120.11:3379
     key: user.rpc
 jwt:
-    accessexpire: 86400
+    accessexpire: 864000
     accesssecret: easy-chat
 listenon: 0.0.0.0:10000
 mode: test
@@ -18,3 +18,7 @@ redisx:
     host: 118.178.120.11:16379
     pass: easy-chat
     type: node
+telemetry:
+    batcher: jaeger
+    endpoint: http://118.178.120.11:14268/api/traces
+    name: user.rpc

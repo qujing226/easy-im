@@ -74,24 +74,24 @@ const actions = {
     });
   },
   // 登出
-  LogOut({ commit }) {
-    return new Promise((resolve, reject) => {
-      commonApi
-        .logoutAPI()
-        .then(() => {
-          /** flush 清空localStorage .rm('authToken') 按照key清除 */
-          Lockr.rm("authToken");
-          Lockr.rm("sessionId");
-          Lockr.rm("UserInfo");
-          removeAuth();
-          resetRouter();
-          resolve();
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  },
+  // LogOut({ commit }) {
+  //   return new Promise((resolve, reject) => {
+  //     commonApi
+  //       .logoutAPI()
+  //       .then(() => {
+  //         /** flush 清空localStorage .rm('authToken') 按照key清除 */
+  //         Lockr.rm("authToken");
+  //         Lockr.rm("sessionId");
+  //         Lockr.rm("UserInfo");
+  //         removeAuth();
+  //         resetRouter();
+  //         resolve();
+  //       })
+  //       .catch((error) => {
+  //         reject(error);
+  //       });
+  //   });
+  // },
   getSystemInfo({ commit }) {
     return new Promise((resolve, reject) => {
       imApi

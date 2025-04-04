@@ -32,7 +32,6 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 }
 
 func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, error) {
-	// todo: add your logic here and delete this line
 	u := models.User{}
 	var err error
 	// 1.检查用户是否存在(phone)

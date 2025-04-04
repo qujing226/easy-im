@@ -26,7 +26,6 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 }
 
 func (l *GetUserInfoLogic) GetUserInfo(in *user.GetUserInfoReq) (*user.GetUserInfoResp, error) {
-	// todo: add your logic here and delete this line
 	u := make([]models.User, 0, 1)
 	s := make([]string, 1)
 	s[0] = in.User

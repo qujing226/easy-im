@@ -28,7 +28,7 @@ func main() {
 	var configs = "user-rpc.yaml"
 	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
 		ETCDEndpoints:  "118.178.120.11:3379",
-		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
+		ProjectKey:     "3c46a0407be60a1f00731ab8e9575df2",
 		Namespace:      "user",
 		Configs:        configs,
 		ConfigFilePath: "../etc/conf",

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>websocket</title>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <input id="msg" value="" />
+  <input type="submit" value="send" onclick="send()">
+  id:
+  <input id="clientId" value="" />
+  <div id="message"></div>
+  <script>
+    // jquery的弹窗输入
+    let phone = prompt('输入用户手机号码');
+	let password = "000000";
+    let data;
+	let loginApi = 'http://127.0.0.1:8888/v1/user/login';
+	let wsApi 	 = "ws://127.0.0.1:10090/ws";
+	
+	$.ajax({
+		url: loginApi,
+		data: JSON.stringify({
+		  phone: phone,
+		  password: password
+		}),
+		type: "post",
+		dataType: "json",
+		async: false,
+		contentType: "application/json",
+		success: function(msg) {
+			data = msg.data;
+		}
+	});
+	
+    /**
+     *0：未连接
+     *1：连接成功，可通讯
+     *2：正在关闭
+     *3：连接已关闭或无法打开
+     */
+    //创建一个webSocket 实例
+    var webSocket = new WebSocket(wsApi,[data.token]);
+
+    webSocket.onerror = function(event) {
+        document.getElementById("message").innerHTML = "<p>close</p>";
+        console.log("error" + event.data);
+    };
+
+    // 打开websocket
+    webSocket.onopen = function(event) {
+        console.log("open:" + sockState());
+        document.getElementById("message").innerHTML = "<p>"+phone+":Connect to Service</p>";
+    };
+
+    //监听消息
+    webSocket.onmessage = function(event) {
+		let msg = JSON.parse(event.data);
+		console.log(msg);
+		document.getElementById("message").innerHTML += "<p>response : " + msg.data.Content + "</p>";
+    };
+
+
+    webSocket.onclose = function(event) {
+        document.getElementById("message").innerHTML = "<p>close</p>";
+        console.log("close:" + sockState());
+        webSocket.close();
+    }
+    function sockState() {
+        var status = ['未连接', '连接成功，可通讯', '正在关闭', '连接已关闭或无法打开'];
+        return status[webSocket.readyState];
+    }
+
+    function send(event) {
+
+        var msg    = document.getElementById('msg').value;
+        var clientId = document.getElementById('clientId').value;
+
+        document.getElementById('msg').value = '';
+        document.getElementById('clientId').value = '';
+
+        console.log("send:" + sockState());
+        console.log("msg=" + msg);
+
+        let data ;
+        if (clientId == "") {
+            // 为广播
+            // webSocket.send();
+            // data = `0{"method":"broadcast","data":{"msg":"${msg}"}}`;
+        } else {
+            // 为私了
+			data = JSON.stringify({
+				method: "conversation.chat",
+				data: {
+					chatType: 2,
+					recvId:clientId,
+					msg: {
+						content:msg
+					}
+				}
+			});
+            // data = `0{"method":"privateChat","data":{"msg":"${msg}","cid":"${clientId}","fid":"${id}"}}`
+        }
+        console.log(data);
+        webSocket.send(data);
+        document.getElementById("message").innerHTML += "<p>request : " + msg + "</p>"
+    }
+
+    function getFormatDate() {
+        var nowDate = new Date();
+        var year = nowDate.getFullYear();
+        var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+        var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+        var hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+        var minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+        var second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+        return year + "" + month + "" + date + "" + hour + "" + minute + "" + second;
+    }
+
+
+  </script>
+</body>
+
+</html>

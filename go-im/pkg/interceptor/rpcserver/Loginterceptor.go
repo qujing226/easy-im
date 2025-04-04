@@ -18,7 +18,8 @@ func LogInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInfo,
 	}
 
 	causeErr := errors.Cause(err)
-	if e, ok := causeErr.(*zerr.CodeMsg); ok {
+	var e *zerr.CodeMsg
+	if errors.As(causeErr, &e) {
 		err = status.Error(codes.Code(e.Code), e.Msg)
 	}
 

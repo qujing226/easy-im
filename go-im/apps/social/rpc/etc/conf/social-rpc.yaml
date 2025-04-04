@@ -14,3 +14,7 @@ mode: test
 mysql:
     datasource: root:easy-chat@tcp(118.178.120.11:13306)/easy_chat?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 name: social.rpc
+telemetry:
+    batcher: jaeger
+    endpoint: http://118.178.120.11:14268/api/traces
+    name: social.rpc

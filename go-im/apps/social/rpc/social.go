@@ -1,14 +1,14 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/config"
 	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/server"
 	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/internal/svc"
 	"github.com/peninsula12/easy-im/go-im/pkg/configserver"
 	"github.com/peninsula12/easy-im/go-im/pkg/interceptor"
 	"github.com/peninsula12/easy-im/go-im/pkg/interceptor/rpcserver"
-	"flag"
-	"fmt"
 
 	"github.com/peninsula12/easy-im/go-im/apps/social/rpc/social"
 
@@ -27,7 +27,7 @@ func main() {
 	var configs = "social-rpc.yaml"
 	err := configserver.NewConfigServer(*configFile, configserver.NewSail(&configserver.Config{
 		ETCDEndpoints:  "118.178.120.11:3379",
-		ProjectKey:     "98c6f2c2287f4c73cea3d40ae7ec3ff2",
+		ProjectKey:     "3c46a0407be60a1f00731ab8e9575df2",
 		Namespace:      "social",
 		Configs:        configs,
 		ConfigFilePath: "../etc/conf",

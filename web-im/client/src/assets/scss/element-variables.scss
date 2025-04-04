@@ -1,0 +1,18 @@
+/* 改变主题色变量 */
+
+$--color-primary: #409EFF;
+
+/** border */
+
+$--border-color-base: #DCDDE6;
+$--border-radius-base: 4px;
+$--font-size-base: 14px;
+$--color-text-primary: #252438;
+$--color-text-regular: #606066;
+$--color-text-secondary: #909199;
+// $--color-text-placeholder: #c0c4cc;
+
+/* 改变 icon 字体路径变量，必需 */
+
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";

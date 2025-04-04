@@ -1,17 +1,18 @@
 import request from "@/utils/request";
 
+
 const imApi = {};
 
 imApi.loginAPI = (params) => {
   console.log("请求信息");
 
   console.log(params);
-  return request({
-    url: "v1/user/login",
-    method: "post",
-    data: params,
-  });
-  // return request.get("http://" + window.location.host + "/data/login.json");
+  // return request({
+  //   url: "v1/user/login",
+  //   method: "post",
+  //   data: params,
+  // });
+  return request.get("http://" + window.location.host + "/data/login.json");
 };
 
 imApi.getSystemInfo = (params) => {
